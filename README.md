@@ -1,1 +1,1 @@
-# PyMolPlugin
+# PyMol Copilot
