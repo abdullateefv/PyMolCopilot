@@ -2,19 +2,19 @@
 #### An AI Assistant for the PyMOL molecular visualization software
 Abdul Lateef FNU, Arqam Usman Ali, Sriram Koyalkar, Saipranith Oku
 
-<p align="center">
-  <img src="title.jpeg" alt="title image" width="1100px" align="middle"/>
+<p>
+  <img src="title.jpeg" alt="title image" width="1100px"/>
 </p>
 
 # Installation
 
-1. To get started make sure you have the PyMOL application [installed](https://pymol.org/2/ "Install"), clone the plugin repo from inside desired working directory:
+1. **To get started make sure you have the PyMOL application [installed](https://pymol.org/2/ "Install"), clone the plugin repo from inside desired working directory:**
 
 ```shell
 git clone https://github.com/abdullateefv/PyMolCopilot.git
 ```
 
-2. Set up your conda environment after making sure you have Anaconda [installed](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html "Install"):
+2. **Set up your conda environment after making sure you have Anaconda [installed](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html "Install"):**
 
 ```shell
 cd PyMolCopilot
@@ -23,23 +23,23 @@ conda activate pymolEnv
 pymol
 ```
 
-3. The PyMOL application should launch. Load the plugin into PyMOL:
+3. **The PyMOL application should launch. Load the plugin into PyMOL:**
 
-    - Navigate to the **Plugin** menu at the top.
-    - Select **Plugin Manager** from the dropdown.
-    - Go to the **Install New Plugin** tab.
-    - Choose **Install from local file**.
-    - Select the __init__.py file in the project top-level folder, click Open
+    - Navigate to the `Plugin` menu at the top.
+    - Select `Plugin Manager` from the dropdown.
+    - Go to the `Install New Plugin` tab.
+    - Choose `Install from local file`.
+    - Select the `__init__.py` file in the project top-level folder, click Open
 
 
-5. Specify the directory to install the plugin files in, click Ok, close Plugin Manager window
+5. **Specify the directory to install the plugin files in, click Ok, close Plugin Manager window**
    6. *These files will need to be deleted and reinstalled from step 3. to see changes from code modified in project files*
 
  
-8. Launch Plugin:
+8. **Launch Plugin:**
 
-    - Navigate to the **Plugin** menu at the top.
-    - Select **PyMol Copilot** from the dropdown.
+    - Navigate to the `Plugin` menu at the top.
+    - Select `PyMol Copilot` from the dropdown.
 
 # File Structure
 ```
