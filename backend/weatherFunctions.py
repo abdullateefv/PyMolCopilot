@@ -1,5 +1,6 @@
 """
 Stores functions for retrieving weather data for function-calling use by GPT
+(Just for demo purposes)
 """
 
 import json

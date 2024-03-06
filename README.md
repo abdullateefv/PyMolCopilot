@@ -20,10 +20,23 @@ git clone https://github.com/abdullateefv/PyMolCopilot.git
 cd PyMolCopilot
 conda env create -f environment.yml
 conda activate pymolEnv
+```
+
+Anytime you run the plugin be sure to use the appropriate env to include project dependencies by using
+
+```shell 
+conda activate pymolEnv
+``` 
+
+3. **Add the .env file with API Key to the project files in the top-level directory**
+
+5. **Execute the terminal command:**
+
+```commandline
 pymol
 ```
 
-3. **The PyMOL application should launch. Load the plugin into PyMOL:**
+4. **The PyMOL application should launch. Load the plugin into PyMOL:**
 
     - Navigate to the `Plugin` menu at the top.
     - Select `Plugin Manager` from the dropdown.
@@ -33,10 +46,10 @@ pymol
 
 
 5. **Specify the directory to install the plugin files in, click Ok, close Plugin Manager window**
-   6. *These files will need to be deleted and reinstalled from step 3. to see changes from code modified in project files*
+   - *These files will need to be deleted and reinstalled from step 3. to see new code modification changes*
 
  
-8. **Launch Plugin:**
+6. **Launch Plugin:**
 
     - Navigate to the `Plugin` menu at the top.
     - Select `PyMol Copilot` from the dropdown.
