@@ -30,7 +30,7 @@ conda activate pymolEnv
 
 3. **Add the .env file with API Key to the project files in the top-level directory**
 
-5. **Execute the terminal command:**
+4. **Execute the terminal command:**
 
 ```commandline
 pymol
