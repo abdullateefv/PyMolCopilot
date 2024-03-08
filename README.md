@@ -36,20 +36,20 @@ conda activate pymolEnv
 pymol
 ```
 
-4. **The PyMOL application should launch. Load the plugin into PyMOL:**
+5. **The PyMOL application should launch. Load the plugin into PyMOL:**
 
     - Navigate to the `Plugin` menu at the top.
     - Select `Plugin Manager` from the dropdown.
     - Go to the `Install New Plugin` tab.
     - Choose `Install from local file`.
-    - Select the `__init__.py` file in the project top-level folder, click Open
+    - Select the `__init__.py` file in the project files top-level folder, click Open
 
 
-5. **Specify the directory to install the plugin files in, click Ok, close Plugin Manager window**
-   - *These files will need to be deleted and reinstalled from step 3. to see new code modification changes*
+6. **Specify the directory to install the plugin files in, click Ok, close Plugin Manager window**
+   - *These files will need to be deleted and reinstalled from step 4 to see new code modification changes*
 
  
-6. **Launch Plugin:**
+7. **Launch Plugin:**
 
     - Navigate to the `Plugin` menu at the top.
     - Select `PyMol Copilot` from the dropdown.
