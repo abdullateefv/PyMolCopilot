@@ -29,10 +29,9 @@ def bg_color(color=None, rgb=None):
 
     try:
         if color is not None:
-            try:
-                cmd.bg_color(color)
-            except:
+            if cmd.get_color_index(color) == -1:
                 raise ValueError("Invalid color name")
+            cmd.bg_color(color)
         elif rgb is not None:
             cmd.set_color("custom_color", rgb)
             cmd.bg_color("custom_color")
