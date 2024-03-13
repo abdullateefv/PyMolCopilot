@@ -20,7 +20,7 @@
       }
     }
   },
-    {
+  {
     "type": "function",
     "function": {
       "name": "bg_color",
@@ -31,10 +31,38 @@
           "color": {
             "type": "string",
             "description": "The color, e.g. red, blue, green, white, black, deeppurple"
+          },
+          "rgb": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "The RGB decimal format, e.g. [1.0, 0.0, 0.0] for red"
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "color",
+      "description": "Changes the color of objects or atoms.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "description": "Color name or number."
+          },
+          "selection": {
+            "type": "string",
+            "description": "Selection expression or name pattern corresponding to the atoms or objects to be colored.",
+            "default": "(all)"
           }
         },
         "required": ["color"]
       }
     }
-  }
+  }  
 ]
