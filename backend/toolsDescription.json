@@ -20,7 +20,7 @@
       }
     }
   },
-    {
+  {
     "type": "function",
     "function": {
       "name": "bg_color",
@@ -35,6 +35,14 @@
         },
         "required": ["color"]
       }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "refresh",
+      "description": "Causes the scene to be redrawn as soon as the operating system allows it to be done.",
+      "parameters": {}
     }
   }
 ]

@@ -12,6 +12,7 @@ from openai.types.chat import ChatCompletionMessage
 
 from backend.weatherFunctions import get_current_weather
 from backend.appearanceFunctions import bg_color
+from backend.appearanceFunctions import refresh
 
 
 # Load API Key from .env file
@@ -71,6 +72,7 @@ def run_conversation(newMessage, verbose):
         available_functions = {
             "get_current_weather": get_current_weather,
             "bg_color": bg_color,
+            "refresh": refresh
         }
 
         for tool_call in tool_calls:
