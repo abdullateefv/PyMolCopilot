@@ -3,6 +3,7 @@ Stores functions for manipulating the appearance of PyMol elements
 """
 
 import json
+from pymol import cmd
 
 def bg_color(color=None, rgb=None):
     """
@@ -17,11 +18,9 @@ def bg_color(color=None, rgb=None):
 
     Returns
     -------
-    results : str
+    response : str
         result of command execution as JSON formatted string
     """
-
-    from pymol import cmd
 
     try:
         if color is not None:
@@ -35,5 +34,32 @@ def bg_color(color=None, rgb=None):
             raise ValueError("Must enter either a color name or a RGB value")
 
         return json.dumps({"status": "success", "bg_color_set": color if color else "custom_color"})
+    except Exception as exceptionMessage:
+        return json.dumps({"status": "failed", "message": exceptionMessage})
+
+
+def cartoon_cmd(type, selection=None):
+    """
+    Sets the cartoon display style
+
+    Parameters
+    ----------
+    type: str
+        The desired cartoon style
+    selection: str
+        Specifies the name of the selection that should have its cartoon style set
+
+    Returns
+    -------
+    response : str
+        result of command execution as JSON formatted string
+    """
+    try:
+        if selection:
+            cmd.cartoon(type, selection)
+            return json.dumps({"status": "success", "type_set": type, "selection_set": selection})
+        else:
+            cmd.cartoon(type)
+            return json.dumps({"status": "success", "type_set": type})
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})
