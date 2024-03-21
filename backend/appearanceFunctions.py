@@ -22,6 +22,7 @@ def bgColor_cmd(color=None, rgb=None):
     response : str
         result of command execution as JSON formatted string
     """
+
     try:
         if color is not None:
             if cmd.get_color_index(color) == -1:
@@ -64,18 +65,31 @@ def cartoon_cmd(type, selection=None):
         return json.dumps({"status": "failed", "message": exceptionMessage})
 
 def refresh():
+        return json.dumps({"status": "failed", "message": exceptionMessage})
+
+
+def cartoon_cmd(type, selection=None):
     """
-    Redraws the scene as soon as the operating system allows it
+    Sets the cartoon display style
+
+    Parameters
+    ----------
+    type: str
+        The desired cartoon style
+    selection: str
+        Specifies the name of the selection that should have its cartoon style set
 
     Returns
     -------
-    results : str
+    response : str
         result of command execution as JSON formatted string
     """
-    from pymol import cmd
-
     try:
-        cmd.refresh()
-        return json.dumps({"status": "success", "message": "Scene refreshed"})
-    except Exception as e:
-        return json.dumps({"status": "failed", "message": "Unable to refresh scene"})
+        if selection:
+            cmd.cartoon(type, selection)
+            return json.dumps({"status": "success", "type_set": type, "selection_set": selection})
+        else:
+            cmd.cartoon(type)
+            return json.dumps({"status": "success", "type_set": type})
+    except Exception as exceptionMessage:
+        return json.dumps({"status": "failed", "message": exceptionMessage})
