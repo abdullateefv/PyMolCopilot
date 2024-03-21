@@ -12,9 +12,9 @@ from openai.types.chat import ChatCompletionMessage
 
 from backend.weatherFunctions import get_current_weather
 from backend.appearanceFunctions import bg_color
-from backend.appearanceFunctions import attach
-from backend.appearanceFunctions import backward
-from backend.appearanceFunctions import button
+from backend.appearanceFunctions import attach_cmd
+from backend.appearanceFunctions import backward_cmd
+from backend.appearanceFunctions import button_cmd
 
 # Load API Key from .env file
 load_dotenv()
@@ -74,9 +74,9 @@ def run_conversation(newMessage, verbose):
         available_functions = {
             "get_current_weather" : get_current_weather,
             "bg_color" : bg_color,
-            "attach" :  attach,
-            "backward" : backward,
-            "button" : button
+            "attach_cmd" :  attach_cmd,
+            "backward_cmd" : backward_cmd,
+            "button" : button_cmd
             }
         
         for tool_call in tool_calls:

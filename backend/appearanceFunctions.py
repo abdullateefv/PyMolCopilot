@@ -30,7 +30,7 @@ def bg_color(color):
 
 from pymol import cmd
 
-def attach(element, geometry, valence):
+def attach_cmd(element, geometry, valence):
     """
     Adds a single atom onto the picked atom
 
@@ -53,8 +53,9 @@ def attach(element, geometry, valence):
         return json.dumps({"status": "success", "message": "Atom attached successfully"})
     except Exception as e:
         return json.dumps({"status": "failed", "message": "Failed to attach atom"})
+
     
-def backward():
+def backward_cmd():
     """
     Moves the movie back one frame.
 
@@ -69,12 +70,14 @@ def backward():
         return json.dumps({"status": "success", "message": "Backward function successfully called"})
     except:
         return json.dumps({"status": "failed", "message": "Unable to call backward"})
-cmd.extend("backward", backward)
+
+cmd.extend("backward", backward_cmd)
+
 
 import json
 from pymol import cmd
 
-def button(button, modifier, action):
+def button_cmd(button, modifier, action):
     """
     Redefines what the mouse buttons do in PyMOL.
 
@@ -97,4 +100,3 @@ def button(button, modifier, action):
         return json.dumps({"status": "success", "message": "Button redefined successfully"})
     except Exception as e:
         return json.dumps({"status": "failed", "message": f"Failed to redefine button: {str(e)}"})
-
