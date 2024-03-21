@@ -64,5 +64,28 @@
         "required": ["type"]
       }
     }
-  }
+  }, 
+    { 
+    "type": "function",
+    "function": {
+        "name": "bond",
+        "description": "Creates a new bond between two selections, each of which should contain one atom.",
+        "parameters" : {
+      "type": "object",
+      "properties": {
+          "atom1": 
+          {
+            "type": "string",
+            "description": "the first atom that in the selection group. e.g. pk1, pk2, sele"
+          },
+          "atom2": 
+          {
+            "type": "string",
+            "description": "the seond atom that in the selection group. e.g. pk1, pk2, sele"
+          }
+      },
+      "required": []
+        }
+     }
+    }
 ]
