@@ -10,10 +10,10 @@ def bg_color(color=None, rgb=None):
 
     Parameters
     ----------
-    color: str, optional
-        Desired background color (default is None)
-    rgb: array, optional
-        RGB decimal format (default is None)
+    color: str, optional (default is None)
+        Desired background color
+    rgb: list, optional (default is None)
+        RGB decimal format
 
     Returns
     -------
@@ -26,7 +26,7 @@ def bg_color(color=None, rgb=None):
     try:
         if color is not None:
             if cmd.get_color_index(color) == -1:
-                raise ValueError("Invalid color name, consider using a custom RGB color array instead")
+                raise ValueError("Invalid color name, consider using a custom RGB color list instead")
             cmd.bg_color(color)
         elif rgb is not None:
             cmd.set_color("custom_color", rgb)
@@ -36,4 +36,4 @@ def bg_color(color=None, rgb=None):
 
         return json.dumps({"status": "success", "bg_color_set": color if color else "custom_color"})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": "Given color not identifiable. Unable to change color."})
+        return json.dumps({"status": "failed", "message": exceptionMessage})
