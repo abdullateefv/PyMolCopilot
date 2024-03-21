@@ -31,18 +31,61 @@
           "color": {
             "type": "string",
             "description": "The color, e.g. red, blue, green, white, black, deeppurple"
+          },
+          "rgb": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "The RGB decimal format, e.g. [1.0, 0.0, 0.0] for red"
           }
-        },
-        "required": ["color"]
+        }
       }
     }
   },
   {
     "type": "function",
     "function": {
-      "name": "refresh",
-      "description": "Causes the scene to be redrawn as soon as the operating system allows it to be done.",
-      "parameters": {}
+      "name": "cartoon_cmd",
+      "description": "Sets the cartoon style of the on-screen view",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The cartoon style type",
+            "enum": ["automatic", "skip", "loop", "rectangle", "oval", "tube", "arrow", "dumbbell"]
+          },
+          "selection": {
+            "type": "string",
+            "description": "The name of the selection to set these changes on, defaults to all open molecules if not provided"
+          }
+        },
+        "required": ["type"]
+      }
     }
-  }
+  }, 
+    { 
+    "type": "function",
+    "function": {
+        "name": "bond",
+        "description": "Creates a new bond between two selections, each of which should contain one atom.",
+        "parameters" : {
+      "type": "object",
+      "properties": {
+          "atom1": 
+          {
+            "type": "string",
+            "description": "the first atom that in the selection group. e.g. pk1, pk2, sele"
+          },
+          "atom2": 
+          {
+            "type": "string",
+            "description": "the seond atom that in the selection group. e.g. pk1, pk2, sele"
+          }
+      },
+      "required": []
+        }
+     }
+    }
 ]
