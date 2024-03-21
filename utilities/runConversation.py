@@ -12,7 +12,7 @@ from openai.types.chat import ChatCompletionMessage
 
 from backend.weatherFunctions import get_current_weather
 from backend.appearanceFunctions import bg_color
-from backend.weatherFunctions import bond
+from backend.actionFunctions import bond
 
 
 # Load API Key from .env file

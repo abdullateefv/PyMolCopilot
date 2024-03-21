@@ -48,15 +48,15 @@
           "atom1": 
           {
             "type": "string",
-            "description": "The basic unit of matter which makes up all elements"
+            "description": "the first atom that in the selection group. e.g. pk1, pk2, sele"
           },
           "atom2": 
           {
             "type": "string",
-            "description": "The basic unit of matter which makes up all elements"
+            "description": "the seond atom that in the selection group. e.g. pk1, pk2, sele"
           }
       },
-      "required": ["atom1", "atom2"]
+      "required": []
         }
      }
     }
