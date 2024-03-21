@@ -12,11 +12,14 @@ from openai.types.chat import ChatCompletionMessage
 
 from backend.weatherFunctions import get_current_weather
 from backend.appearanceFunctions import bg_color
-
+from backend.appearanceFunctions import attach
+from backend.appearanceFunctions import backward
+from backend.appearanceFunctions import button
 
 # Load API Key from .env file
 load_dotenv()
 api_key = os.getenv('API_KEY')
+print(api_key,"This is the API key")
 client = OpenAI(api_key=api_key)
 
 
@@ -69,14 +72,17 @@ def run_conversation(newMessage, verbose):
         # Step 7: Call the desired functions
         # TODO: MUST UPDATE THIS WHEN NEW FUNCTIONS ARE ADDED
         available_functions = {
-            "get_current_weather": get_current_weather,
-            "bg_color": bg_color,
-        }
-
+            "get_current_weather" : get_current_weather,
+            "bg_color" : bg_color,
+            "attach" :  attach,
+            "backward" : backward,
+            "button" : button
+            }
+        
         for tool_call in tool_calls:
             function_name = tool_call.function.name
             function_to_call = available_functions[function_name]
-            function_args = json.loads(tool_call.function.arguments)
+            function_args = json.loads(tool_call.function.arguments) 
             function_response = function_to_call(**function_args)
 
             # Step 8: Append returned values from called functions to message history
@@ -89,7 +95,7 @@ def run_conversation(newMessage, verbose):
                 }
             )
 
-        # Step 9: Return message history updated with called function returned values to GPT for it to analyze
+        # Step 9: Retu/Users/sriramkoyalkar/opt/anaconda3/envs/pymolEnv/lib/python3.12/site-packages/pmg_tk/startuprn message history updated with called function returned values to GPT for it to analyze
         second_response = client.chat.completions.create(
             model="gpt-3.5-turbo-0125",
             messages=messages,
@@ -167,6 +173,7 @@ def style_messages(messages):
 
     Returns
     -------
+    
     styled_messages : str
         Stringified literal chat content with HTML tags added for styling
     """

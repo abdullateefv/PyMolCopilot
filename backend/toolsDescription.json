@@ -36,5 +36,57 @@
         "required": ["color"]
       }
     }
-  }
+  },
+
+  {
+    "type": "function",
+    "function": {
+      "name": "attach",
+      "description": "Adds a single atom onto the picked atom",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "element": {
+            "type": "string",
+            "description": "The chemical element of the atom, e.g. 'H' for hydrogen"
+          },
+          "geometry": {
+            "type": "string",
+            "description": "The geometry of the atom, e.g. 1"
+          },
+          "valence": {
+            "type": "integer",
+            "description": "The valence of the atom, e.g. 1"
+          }
+        },
+        "required": ["element", "geometry", "valence"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "backward",
+      "description": "backward moves the movie back one frame.",
+      "parameters": {}
+    }
+  },
+
+  {
+    "type":"function",
+    "name": "button",
+    "description": "button can be used to redefine what the mouse buttons do.",
+    "usage": "button button, modifier, action",
+    "arguments": {
+        "button": "left, middle, right, wheel, double_left, double_middle, double_right, single_left, single_middle, or single_right",
+        "modifiers": "None, Shft, Ctrl, CtSh, CtAl, CtAS",
+        "actions": "None, Rota, Move, MovZ, Slab, +Box, -Box, Clip, MovS, +/-, PkAt, Pk1, MvSZ, Sele, Orig, Menu, PkAt, Pk1 RotO, MovO, MvOZ, MovA, PkAt, PkTB, MvSZ MvAZ, DrgM, RotZ, PkBd, ClpN, ClpF"
+    },
+    "notes": "Changes made using the button command are easily overridden when the user iterates through the mouse modes. This behavior needs to be changed. Obsolete actions: lb, mb, rb, +lb, +mb, +rb, +lbX, -lbX. Unsupported, Internal, or Future Actions: RotD, MovD, MvDZ, RotF, MovF, MvFZ, TorF, RotV, MovV, MvVZ, DgMZ, DgRT",
+    "api": "cmd.button(string button, string modifier, string action)",
+    "see_also": "config_mouse"
+}   
 ]
+
+
+
