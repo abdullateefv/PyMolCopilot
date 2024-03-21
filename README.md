@@ -89,3 +89,9 @@ PymolCopilot/
   - Grouped into components where each component is an application window
 - Utilities holds middleware & functions used across application
   - Includes communication and data processing logic for OpenAI API/GPT interfacing
+
+# Architecture
+
+<p>
+  <img src="AI_Copilot.png" alt="title image" width="1100px"/>
+</p>
