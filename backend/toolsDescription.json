@@ -64,28 +64,47 @@
         "required": ["type"]
       }
     }
-  }, 
-    { 
+  },
+  {
     "type": "function",
     "function": {
-        "name": "bond",
-        "description": "Creates a new bond between two selections, each of which should contain one atom.",
-        "parameters" : {
-      "type": "object",
-      "properties": {
-          "atom1": 
-          {
+      "name": "bond",
+      "description": "Creates a new bond between two selections, each of which should contain one atom.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "atom1": {
             "type": "string",
-            "description": "the first atom that in the selection group. e.g. pk1, pk2, sele"
+            "description": "The selection group that contains the first atom e.g. pk1, pk2, sele"
           },
-          "atom2": 
-          {
+          "atom2": {
             "type": "string",
-            "description": "the seond atom that in the selection group. e.g. pk1, pk2, sele"
+            "description": "The selection group that contains the second atom e.g. pk1, pk2, sele"
           }
-      },
-      "required": []
-        }
-     }
+        },
+        "required": []
+      }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_cmd",
+      "description": "Creates a new molecule object from a selection.  It can also be used to update an existing object to the selection.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the new molecule to be created, or the name of the object to be updated"
+          },
+          "selection": {
+            "type": "string",
+            "description": "The name of the selection to create from, or the name of the selection to update to"
+          }
+        },
+        "required": ["name", "selection"]
+      }
+    }
+  }
 ]
