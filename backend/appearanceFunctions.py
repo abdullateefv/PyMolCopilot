@@ -71,8 +71,6 @@ def backward_cmd():
     except:
         return json.dumps({"status": "failed", "message": "Unable to call backward"})
 
-cmd.extend("backward", backward_cmd)
-
 
 import json
 from pymol import cmd

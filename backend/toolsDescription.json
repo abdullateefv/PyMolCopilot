@@ -72,5 +72,44 @@
         ]
       }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "backward_cmd",
+      "description": "Moves the movie back one frame",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "button_cmd",
+      "description": "Redefines what buttons do",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "button": {
+            "type": "string",
+            "description": "The mouse button to redefine (e.g., left, middle, right, wheel, double_left, etc.)"
+          },
+          "modifier": {
+            "type": "string",
+            "description": "The modifier key associated with the button (e.g., None, Shft, Ctrl, CtSh, etc.)."
+          },
+          "action": {
+            "type": "string",
+            "description": "The action to be performed when the button is clicked (e.g., Rota, Move, MovZ, etc.)"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    }
   }
 ]

@@ -76,7 +76,7 @@ def run_conversation(newMessage, verbose):
             "bg_color" : bg_color,
             "attach_cmd" :  attach_cmd,
             "backward_cmd" : backward_cmd,
-            "button" : button_cmd
+            "button_cmd" : button_cmd
             }
         
         for tool_call in tool_calls:
