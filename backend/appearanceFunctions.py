@@ -4,15 +4,16 @@ Stores functions for manipulating the appearance of PyMol elements
 
 import json
 
-
-def bg_color(color):
+def bg_color(color=None, rgb=None):
     """
     Sets the background color
 
     Parameters
     ----------
-    color: str
+    color: str, optional (default is None)
         Desired background color
+    rgb: list, optional (default is None)
+        RGB decimal format
 
     Returns
     -------
@@ -23,7 +24,16 @@ def bg_color(color):
     from pymol import cmd
 
     try:
-        cmd.bg_color(color)
-        return json.dumps({"status": "success", "bg_color_set": color})
+        if color is not None:
+            if cmd.get_color_index(color) == -1:
+                raise ValueError("Invalid color name, consider using a custom RGB color list instead")
+            cmd.bg_color(color)
+        elif rgb is not None:
+            cmd.set_color("custom_color", rgb)
+            cmd.bg_color("custom_color")
+        else:
+            raise ValueError("Must enter either a color name or a RGB value")
+
+        return json.dumps({"status": "success", "bg_color_set": color if color else "custom_color"})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed"})
+        return json.dumps({"status": "failed", "message": exceptionMessage})

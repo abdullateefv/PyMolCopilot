@@ -20,7 +20,7 @@
       }
     }
   },
-    {
+  {
     "type": "function",
     "function": {
       "name": "bg_color",
@@ -31,9 +31,15 @@
           "color": {
             "type": "string",
             "description": "The color, e.g. red, blue, green, white, black, deeppurple"
+          },
+          "rgb": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "The RGB decimal format, e.g. [1.0, 0.0, 0.0] for red"
           }
-        },
-        "required": ["color"]
+        }
       }
     }
   }
