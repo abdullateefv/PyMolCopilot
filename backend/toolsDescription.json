@@ -20,7 +20,7 @@
       }
     }
   },
-    {
+  {
     "type": "function",
     "function": {
       "name": "bg_color",
@@ -34,6 +34,28 @@
           }
         },
         "required": ["color"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cartoon_cmd",
+      "description": "Sets the cartoon style of the on-screen view",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The cartoon style type",
+            "enum": ["automatic", "skip", "loop", "rectangle", "oval", "tube", "arrow", "dumbbell"]
+          },
+          "selection": {
+            "type": "string",
+            "description": "The name of the selection to set these changes on, defaults to all open molecules if not provided"
+          }
+        },
+        "required": ["type"]
       }
     }
   }
