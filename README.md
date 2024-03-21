@@ -93,5 +93,5 @@ PymolCopilot/
 # Architecture
 
 <p>
-  <img src="AI_Copilot.png" alt="title image" width="1100px"/>
+  <img src="architecture.png" alt="title image" width="1100px"/>
 </p>
