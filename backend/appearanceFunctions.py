@@ -87,7 +87,7 @@ def color_cmd(color, selection="(all)"):
     ----------
     color : str
         Color name or number.
-    selection : str, optional Default is "(all)"
+    selection : str, optional Default is "(all)".
         Selection expression or name pattern corresponding to the atoms or objects to be colored.
 
     Returns
