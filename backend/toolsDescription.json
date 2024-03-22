@@ -2,28 +2,7 @@
   {
     "type": "function",
     "function": {
-      "name": "get_current_weather",
-      "description": "Get the current weather in a given location",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "location": {
-            "type": "string",
-            "description": "The city and state, e.g. San Francisco, CA"
-          },
-          "unit": {
-            "type": "string",
-            "enum": ["celsius", "fahrenheit"]
-          }
-        },
-        "required": ["location"]
-      }
-    }
-  },
-  {
-    "type": "function",
-    "function": {
-      "name": "bg_color",
+      "name": "bgColor_cmd",
       "description": "Sets the background color of the Pymol window",
       "parameters": {
         "type": "object",
@@ -68,7 +47,7 @@
   {
     "type": "function",
     "function": {
-      "name": "bond",
+      "name": "bond_cmd",
       "description": "Creates a new bond between two selections, each of which should contain one atom.",
       "parameters": {
         "type": "object",
@@ -104,6 +83,30 @@
           }
         },
         "required": ["name", "selection"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "origin_cmd",
+      "description": "Sets center of rotation (origin). Defaults to the center of all objects if params null.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "The name of the selection or object which should be set as the origin / center of rotation. E.g. pk1, sele, molecule1"
+          },
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "An array of numbers that represent the XYZ coordinates that should be set as the origin / center of rotation. E.g. [1.0,2.0,3.0]"
+          }
+        },
+        "required": []
       }
     }
   }

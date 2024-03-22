@@ -15,6 +15,7 @@ def create_cmd(name, selection):
         name of object to create or modify
     selection: str
         The name of the selection that will be included in the new object
+
     Returns
     -------
     response: str
@@ -26,7 +27,7 @@ def create_cmd(name, selection):
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "error": exceptionMessage})
 
-def bond(atom1, atom2):
+def bond_cmd(atom1, atom2):
     """
    creates a bond between two selections
 
