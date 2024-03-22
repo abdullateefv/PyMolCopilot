@@ -109,5 +109,22 @@
         "required": []
       }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+        "name": "protect_cmd",
+        "description": "Protects a set of atoms from transformations",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "selection": {
+                    "type": "string",
+                    "description": "The selection of atoms to protect"
+                }
+            },
+            "required": ["selection"]
+        }
+    }
   }
 ]

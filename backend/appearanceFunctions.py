@@ -1,5 +1,6 @@
 """
 Stores functions for manipulating the appearance of PyMol elements
+Note: Only aesthetic functions
 """
 
 import json
@@ -35,7 +36,6 @@ def bgColor_cmd(color=None, rgb=None):
         return json.dumps({"status": "success", "bg_color_set": color if color else "custom_color"})
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})
-
 
 def cartoon_cmd(type, selection=None):
     """
