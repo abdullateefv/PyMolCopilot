@@ -11,14 +11,13 @@ from openai import OpenAI
 from openai.types.chat import ChatCompletionMessage
 
 from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd
-from backend.moleculeCRUDFunctions import create_cmd, bond_cmd
+from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd
 from backend.viewFunctions import origin_cmd
 
 # Load API Key from .env file
 load_dotenv()
 api_key = os.getenv('API_KEY')
 client = OpenAI(api_key=api_key)
-
 
 def run_conversation(newMessage, verbose):
     """
@@ -74,6 +73,7 @@ def run_conversation(newMessage, verbose):
             "cartoon_cmd": cartoon_cmd,
             "bond_cmd": bond_cmd,
             "create_cmd": create_cmd,
+            "protect_cmd": protect_cmd,
         }
 
         for tool_call in tool_calls:

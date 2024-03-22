@@ -1,5 +1,6 @@
 """
 Stores functions for manipulating the appearance of PyMol elements
+Note: Only aesthetic functions
 """
 
 import json
@@ -36,7 +37,6 @@ def bgColor_cmd(color=None, rgb=None):
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})
 
-
 def cartoon_cmd(type, selection=None):
     """
     Sets the cartoon display style
@@ -60,26 +60,5 @@ def cartoon_cmd(type, selection=None):
         else:
             cmd.cartoon(type)
             return json.dumps({"status": "success", "type_set": type})
-    except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
-    
-def protect(selection):
-    """
-    Protects a set of atoms from transformations
-
-    Parameters
-    ----------
-    selection: str
-        Selection of atoms to protect
-
-    Returns
-    -------
-    results : str
-        Result of command execution as JSON formatted string
-    """
-
-    try:
-        cmd.protect(selection)
-        return json.dumps({"status": "success", "protected_atoms": selection, "message": "Given selection is protected."})
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})

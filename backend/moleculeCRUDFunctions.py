@@ -1,5 +1,5 @@
 """
-This file contains any functions that perform the CRUD operations on functions
+This file contains any functions related to manipulating or performing CRUD operations on objects/molecules
 """
 
 import json
@@ -42,11 +42,28 @@ def bond_cmd(atom1, atom2):
     -------
     bonded atom structure
     """
-
-    from pymol import cmd
-
     try:
         cmd.bond(atom1, atom2)
         return json.dumps({"status": "success", "message": "Atoms are bonded"})
+    except Exception as exceptionMessage:
+        return json.dumps({"status": "failed", "message": exceptionMessage})
+
+def protect_cmd(selection):
+    """
+    Protects a set of atoms from transformations
+
+    Parameters
+    ----------
+    selection: str
+        Selection of atoms to protect
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.protect(selection)
+        return json.dumps({"status": "success", "protected_atoms": selection, "message": "Given selection is protected."})
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})
