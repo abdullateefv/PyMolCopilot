@@ -31,9 +31,79 @@
           "color": {
             "type": "string",
             "description": "The color, e.g. red, blue, green, white, black, deeppurple"
+          },
+          "rgb": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "The RGB decimal format, e.g. [1.0, 0.0, 0.0] for red"
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cartoon_cmd",
+      "description": "Sets the cartoon style of the on-screen view",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The cartoon style type",
+            "enum": ["automatic", "skip", "loop", "rectangle", "oval", "tube", "arrow", "dumbbell"]
+          },
+          "selection": {
+            "type": "string",
+            "description": "The name of the selection to set these changes on, defaults to all open molecules if not provided"
           }
         },
-        "required": ["color"]
+        "required": ["type"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "bond",
+      "description": "Creates a new bond between two selections, each of which should contain one atom.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "atom1": {
+            "type": "string",
+            "description": "The selection group that contains the first atom e.g. pk1, pk2, sele"
+          },
+          "atom2": {
+            "type": "string",
+            "description": "The selection group that contains the second atom e.g. pk1, pk2, sele"
+          }
+        },
+        "required": []
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_cmd",
+      "description": "Creates a new molecule object from a selection.  It can also be used to update an existing object to the selection.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the new molecule to be created, or the name of the object to be updated"
+          },
+          "selection": {
+            "type": "string",
+            "description": "The name of the selection to create from, or the name of the selection to update to"
+          }
+        },
+        "required": ["name", "selection"]
       }
     }
   },
