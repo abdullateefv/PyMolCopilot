@@ -10,9 +10,10 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from openai.types.chat import ChatCompletionMessage
 
-from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd
-from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd
-from backend.viewFunctions import origin_cmd
+from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd, refresh_cmd
+from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd
+from backend.viewFunctions import origin_cmd, backward_cmd
+from backend.settingsFunctions import button_cmd
 
 # Load API Key from .env file
 load_dotenv()
@@ -74,6 +75,10 @@ def run_conversation(newMessage, verbose):
             "bond_cmd": bond_cmd,
             "create_cmd": create_cmd,
             "protect_cmd": protect_cmd,
+            "refresh_cmd": refresh_cmd,
+            "attach_cmd": attach_cmd,
+            "button_cmd": button_cmd,
+            "backward_cmd": backward_cmd,
         }
 
         for tool_call in tool_calls:

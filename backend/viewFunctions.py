@@ -35,3 +35,19 @@ def origin_cmd(selection=None, position=None):
             return json.dumps({'status': 'success', 'origin_set': '(all)'})
     except Exception as errorMessage:
         return json.dumps({'status': 'failed', 'message': errorMessage})
+
+def backward_cmd():
+    """
+    Moves the movie back one frame.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
+    try:
+        cmd.backward()
+        return json.dumps({"status": "success", "message": "Backward function successfully called"})
+    except:
+        return json.dumps({"status": "failed", "message": "Unable to call backward"})

@@ -22,6 +22,7 @@ def bgColor_cmd(color=None, rgb=None):
     response : str
         result of command execution as JSON formatted string
     """
+
     try:
         if color is not None:
             if cmd.get_color_index(color) == -1:
@@ -60,5 +61,20 @@ def cartoon_cmd(type, selection=None):
         else:
             cmd.cartoon(type)
             return json.dumps({"status": "success", "type_set": type})
+    except Exception as exceptionMessage:
+        return json.dumps({"status": "failed", "message": exceptionMessage})
+
+def refresh_cmd():
+    """
+    Redraws the scene as soon as the operating system allows it
+
+    Returns
+    -------
+    results : str
+        result of command execution as JSON formatted string
+    """
+    try:
+        cmd.refresh()
+        return json.dumps({"status": "success", "message": "Scene refreshed"})
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})
