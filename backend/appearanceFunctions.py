@@ -64,37 +64,7 @@ def cartoon_cmd(type, selection=None):
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})
 
-def refresh():
-        return json.dumps({"status": "failed", "message": exceptionMessage})
-
-
-def cartoon_cmd(type, selection=None):
-    """
-    Sets the cartoon display style
-
-    Parameters
-    ----------
-    type: str
-        The desired cartoon style
-    selection: str
-        Specifies the name of the selection that should have its cartoon style set
-
-    Returns
-    -------
-    response : str
-        result of command execution as JSON formatted string
-    """
-    try:
-        if selection:
-            cmd.cartoon(type, selection)
-            return json.dumps({"status": "success", "type_set": type, "selection_set": selection})
-        else:
-            cmd.cartoon(type)
-            return json.dumps({"status": "success", "type_set": type})
-    except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
-
-def refresh():
+def refresh_cmd():
     """
     Redraws the scene as soon as the operating system allows it
 
@@ -103,8 +73,6 @@ def refresh():
     results : str
         result of command execution as JSON formatted string
     """
-    from pymol import cmd
-
     try:
         cmd.refresh()
         return json.dumps({"status": "success", "message": "Scene refreshed"})

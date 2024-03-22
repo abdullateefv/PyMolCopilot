@@ -67,3 +67,27 @@ def protect_cmd(selection):
         return json.dumps({"status": "success", "protected_atoms": selection, "message": "Given selection is protected."})
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})
+
+def attach_cmd(element, geometry, valence):
+    """
+    Adds a single atom onto the picked atom
+
+    Parameters
+    ----------
+    element : str
+        The chemical element of the atom, e.g. 'H' for hydrogen
+    geometry : str
+        The geometry of the atom, e.g. 1
+    valence : int
+        The valence of the atom, e.g. 1
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.attach(element, geometry, valence)
+        return json.dumps({"status": "success", "message": "Atom attached successfully"})
+    except Exception as e:
+        return json.dumps({"status": "failed", "message": "Failed to attach atom"})
