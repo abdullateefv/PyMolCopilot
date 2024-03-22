@@ -11,7 +11,7 @@ from openai import OpenAI
 from openai.types.chat import ChatCompletionMessage
 
 from backend.weatherFunctions import get_current_weather
-from backend.appearanceFunctions import bg_color, cartoon_cmd
+from backend.appearanceFunctions import bg_color, cartoon_cmd, protect
 from backend.moleculeCRUDFunctions import create_cmd, bond
 
 # Load API Key from .env file
@@ -74,6 +74,7 @@ def run_conversation(newMessage, verbose):
             "cartoon_cmd": cartoon_cmd,
             "bond": bond,
             "create_cmd": create_cmd,
+            "protect": protect
         }
 
         for tool_call in tool_calls:
