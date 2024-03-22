@@ -206,7 +206,7 @@
   {
     "type": "function",
     "function": {
-      "name": "color_cmd",
+      "name": "color",
       "description": "Changes the color of objects or atoms.",
       "parameters": {
         "type": "object",
@@ -224,5 +224,5 @@
         "required": ["color"]
       }
     }
-  }    
+  }  
 ]
