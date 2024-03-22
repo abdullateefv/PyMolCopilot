@@ -79,7 +79,7 @@ def refresh_cmd():
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})
 
-def color(color, selection="(all)"):
+def color_cmd(color, selection="(all)"):
     """
     Changes the color of objects or atoms.
 
@@ -87,9 +87,8 @@ def color(color, selection="(all)"):
     ----------
     color : str
         Color name or number.
-    selection : str, optional
+    selection : str, optional Default is "(all)"
         Selection expression or name pattern corresponding to the atoms or objects to be colored.
-        Default is "(all)".
 
     Returns
     -------
@@ -105,4 +104,4 @@ def color(color, selection="(all)"):
         cmd.color(color, selection)
         return json.dumps({"status": "success", "color_set": color, "selection": selection})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": "Unable to change color of the specified objects/atoms."})
+        return json.dumps({"status": "failed", "message": exceptionMessage})
