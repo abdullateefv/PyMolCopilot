@@ -5,7 +5,7 @@ Stores functions for manipulating the appearance of PyMol elements
 import json
 from pymol import cmd
 
-def bg_color(color=None, rgb=None):
+def bgColor_cmd(color=None, rgb=None):
     """
     Sets the background color
 
@@ -21,7 +21,6 @@ def bg_color(color=None, rgb=None):
     response : str
         result of command execution as JSON formatted string
     """
-
     try:
         if color is not None:
             if cmd.get_color_index(color) == -1:
@@ -46,7 +45,7 @@ def cartoon_cmd(type, selection=None):
     ----------
     type: str
         The desired cartoon style
-    selection: str
+    selection: str, optional (default is None)
         Specifies the name of the selection that should have its cartoon style set
 
     Returns
