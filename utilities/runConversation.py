@@ -10,15 +10,15 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from openai.types.chat import ChatCompletionMessage
 
-from backend.weatherFunctions import get_current_weather
-from backend.appearanceFunctions import bg_color
-from backend.appearanceFunctions import color
+from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd, refresh_cmd
+from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd
+from backend.viewFunctions import origin_cmd, backward_cmd
+from backend.settingsFunctions import button_cmd
 
 # Load API Key from .env file
 load_dotenv()
 api_key = os.getenv('API_KEY')
 client = OpenAI(api_key=api_key)
-
 
 def run_conversation(newMessage, verbose):
     """
@@ -69,9 +69,16 @@ def run_conversation(newMessage, verbose):
         # Step 7: Call the desired functions
         # TODO: MUST UPDATE THIS WHEN NEW FUNCTIONS ARE ADDED
         available_functions = {
-            "get_current_weather": get_current_weather,
-            "bg_color": bg_color,
-            "color": color
+            "origin_cmd": origin_cmd,
+            "bgColor_cmd": bgColor_cmd,
+            "cartoon_cmd": cartoon_cmd,
+            "bond_cmd": bond_cmd,
+            "create_cmd": create_cmd,
+            "protect_cmd": protect_cmd,
+            "refresh_cmd": refresh_cmd,
+            "attach_cmd": attach_cmd,
+            "button_cmd": button_cmd,
+            "backward_cmd": backward_cmd,
         }
 
         for tool_call in tool_calls:
