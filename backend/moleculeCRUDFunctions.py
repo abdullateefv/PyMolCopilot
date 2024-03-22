@@ -91,3 +91,16 @@ def attach_cmd(element, geometry, valence):
         return json.dumps({"status": "success", "message": "Atom attached successfully"})
     except Exception as e:
         return json.dumps({"status": "failed", "message": "Failed to attach atom"})
+    
+def center(selection=None, state=None, origin=None): 
+    """
+
+    """
+
+    from pymol import cmd
+
+    try: 
+        cmd.center(selection, state, origin)
+        return json.dumps({"status": "success", "message": "Selection has been centered"})
+    except Exception as exceptionMessage: 
+        return json.dumps({"status": "failed", "message": exceptionMessage})
