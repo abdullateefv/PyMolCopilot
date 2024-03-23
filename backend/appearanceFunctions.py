@@ -16,7 +16,6 @@ def bgColor_cmd(color=None, rgb=None):
         Desired background color
     rgb: list, optional (default is None)
         RGB decimal format
-
     Returns
     -------
     response : str
