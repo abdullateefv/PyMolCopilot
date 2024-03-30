@@ -91,3 +91,23 @@ def attach_cmd(element, geometry, valence):
         return json.dumps({"status": "success", "message": "Atom attached successfully"})
     except Exception as e:
         return json.dumps({"status": "failed", "message": "Failed to attach atom"})
+
+def delete_cmd(name):
+    """
+    Removes objects and named selections.
+
+    Parameters
+    ----------
+    name: str
+        Name(s) of object(s) or selection(s), supports wildcards (*)
+
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.delete(name)
+        return json.dumps({"status": "success", "message": "Specified selection successfully deleted"})
+    except Exception as exceptionMessage:
+        return json.dumps({"status": "failed", "error": exceptionMessage})

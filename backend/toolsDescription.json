@@ -202,5 +202,22 @@
         ]
       }
     }
-  }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "delete_cmd",
+      "description": "Removes objects and named selections",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name(s) of object(s) or selection(s), supports wildcards (*)"
+          }
+        },
+        "required": ["name"]
+      }
+    }
+  }  
 ]
