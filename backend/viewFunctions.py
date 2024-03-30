@@ -51,3 +51,23 @@ def backward_cmd():
         return json.dumps({"status": "success", "message": "Backward function successfully called"})
     except:
         return json.dumps({"status": "failed", "message": "Unable to call backward"})
+
+def quit_cmd(code=0):
+    """
+    Terminates the program.
+
+    Parameters
+    ----------
+    code: int, optional (default is 0)
+        The status code to exit the application with
+
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.quit(code)
+        return json.dumps({"status": "success", "message": "Program terminated"})
+    except Exception as errorMessage:
+        return json.dumps({"status": "failed", "message": errorMessage})

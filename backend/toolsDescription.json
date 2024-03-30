@@ -202,5 +202,22 @@
         ]
       }
     }
-  }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "quit_cmd",
+      "description": "Terminates the program.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "Exit the application with status 'code'",
+            "default": 0
+          }
+        }
+      }
+    }
+  }  
 ]
