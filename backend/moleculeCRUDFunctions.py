@@ -98,8 +98,8 @@ def attach_cmd(element, geometry, valence):
         return json.dumps({"success": False, "message": "Failed to attach atom"})
 
 
-def remove_cmd(selection): 
-    """ 
+def remove_cmd(selection):
+    """
     creates a bond between two selections.
 
     Parameters
@@ -112,12 +112,12 @@ def remove_cmd(selection):
 
     """
 
-    from pymol import cmd 
+    from pymol import cmd
 
-    try: 
+    try:
         cmd.remove(selection)
         return json.dumps({"success": True, "messsage": "The selection has successfully removed"})
-    except Exception as exceptionMessage: 
+    except Exception as exceptionMessage:
         return json.dumps({"success": False, "message": exceptionMessage})
 
 
@@ -163,3 +163,19 @@ def center_cmd(selection="all", state="0", origin="1"):
         return json.dumps({"success": True, "message": "Selection has been centered"})
     except Exception as exceptionMessage:
         return json.dumps({"success": False, "message": str(exceptionMessage)})
+
+
+def h_fill_cmd():
+    """
+    Removes and replaces hydrogens on the atom or bond picked for editing.
+
+    Returns
+    -------
+    results : str
+        result of command execution as JSON formatted string
+    """
+    try:
+        cmd.h_fill()
+        return json.dumps({"status": "success", "message": "Successfully executed h_fill"})
+    except Exception as exceptionMessage:
+        return json.dumps({"status": "failed", "message": exceptionMessage})

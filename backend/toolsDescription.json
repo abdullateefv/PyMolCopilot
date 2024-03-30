@@ -294,5 +294,13 @@
         "required": ["selection"]
       }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "h_fill",
+      "description": "Removes and replaces hydrogens on the atom or bond picked for editing.",
+      "parameters": {}
+    }
   }
 ]
