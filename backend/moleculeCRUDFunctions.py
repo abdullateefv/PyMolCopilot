@@ -91,3 +91,18 @@ def attach_cmd(element, geometry, valence):
         return json.dumps({"status": "success", "message": "Atom attached successfully"})
     except Exception as e:
         return json.dumps({"status": "failed", "message": "Failed to attach atom"})
+
+def h_fill_cmd():
+    """
+    Removes and replaces hydrogens on the atom or bond picked for editing.
+
+    Returns
+    -------
+    results : str
+        result of command execution as JSON formatted string
+    """
+    try:
+        cmd.h_fill()
+        return json.dumps({"status": "success", "message": "Successfully executed h_fill"})
+    except Exception as exceptionMessage:
+        return json.dumps({"status": "failed", "message": exceptionMessage})
