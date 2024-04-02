@@ -202,7 +202,11 @@
         ]
       }
     }
+<<<<<<< Updated upstream
   }, 
+=======
+  },
+>>>>>>> Stashed changes
   { 
     "type": "function", 
     "function": { 
@@ -217,12 +221,20 @@
             "default": "all"
           }, 
           "state": { 
+<<<<<<< Updated upstream
             "type": "number", 
+=======
+            "type": "integer", 
+>>>>>>> Stashed changes
             "description": "coordinates for states. 0 means use all coordinate states, greater than 0 means use coordinates for a specific state, and -1 means use only coordinates for the current state.",
             "default": "0"
           }, 
           "origin": { 
+<<<<<<< Updated upstream
             "type": "number", 
+=======
+            "type": "integer", 
+>>>>>>> Stashed changes
             "description": "This is the origin to use to center the selection. 1 means move the origin, 0 means keep the origin unchanged.",
             "default": "1"
           }

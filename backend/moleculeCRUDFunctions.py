@@ -91,10 +91,26 @@ def attach_cmd(element, geometry, valence):
         return json.dumps({"status": "success", "message": "Atom attached successfully"})
     except Exception as e:
         return json.dumps({"status": "failed", "message": "Failed to attach atom"})
+<<<<<<< Updated upstream
     
 def center(selection=None, state=None, origin=None): 
     """
 
+=======
+
+def center_cmd(selection="all", state="0", origin="1"): 
+    """
+    Translates the window and the origin to a point centered within the atom selection.
+
+    Parameters
+    ----------
+    selection: str 
+        An singular atom or a chain that is meant to serve as the guidline to center
+    state: int 
+        coordinate to match states. 
+    origin: int 
+        to move or not to move the center of the selection when centering.  
+>>>>>>> Stashed changes
     """
 
     from pymol import cmd
@@ -103,4 +119,9 @@ def center(selection=None, state=None, origin=None):
         cmd.center(selection, state, origin)
         return json.dumps({"status": "success", "message": "Selection has been centered"})
     except Exception as exceptionMessage: 
+<<<<<<< Updated upstream
         return json.dumps({"status": "failed", "message": exceptionMessage})
+=======
+        return json.dumps({"status": "failed", "message": str(exceptionMessage)})
+
+>>>>>>> Stashed changes
