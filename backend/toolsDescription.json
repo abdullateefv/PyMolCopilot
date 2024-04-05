@@ -155,7 +155,7 @@
     "function": {
       "name": "deselect",
       "description": "Disables any and all visible selections.",
-      "parameters": [],
+      "parameters": {},
       "returns": {
         "type": "None",
         "description": "No return value."
@@ -168,13 +168,12 @@
   "function": {
     "name": "id_atom",
     "description": "Returns the original source ID of a single atom or raises an exception if the atom does not exist or if the selection corresponds to multiple atoms.",
-    "parameters": [
-      {
+    "parameters": {
         "name": "selection",
         "type": "str",
         "description": "Atom selection in PyMOL."
       }
-    ],
+    },
     "returns": {
       "type": "int",
       "description": "Original source ID of the atom."
@@ -183,6 +182,5 @@
       "type": "ValueError",
       "description": "If the atom does not exist or if the selection corresponds to multiple atoms."
     }
-  }
   }
 ]
