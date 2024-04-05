@@ -77,3 +77,28 @@ def refresh_cmd():
         return json.dumps({"status": "success", "message": "Scene refreshed"})
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": exceptionMessage})
+
+def color_cmd(color, selection="(all)"):
+    """
+    Changes the color of objects or atoms.
+    Parameters
+    ----------
+    color : str
+        Color name or number.
+    selection : str, optional (Default is "(all)")
+        Selection expression or name pattern corresponding to the atoms or objects to be colored.
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON formatted string.
+    """
+
+    from pymol import cmd
+
+    try:
+        if cmd.get_color_index(color) == -1:
+                raise ValueError("Invalid color name")
+        cmd.color(color, selection)
+        return json.dumps({"status": "success", "color_set": color, "selection": selection})
+    except Exception as exceptionMessage:
+        return json.dumps({"status": "failed", "message": exceptionMessage})
