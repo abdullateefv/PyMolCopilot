@@ -34,9 +34,9 @@ def bgColor_cmd(color=None, rgb=None):
         else:
             raise ValueError("Must enter either a color name or a RGB value")
 
-        return json.dumps({"status": "success", "bg_color_set": color if color else "custom_color"})
+        return json.dumps({"success": True, "bg_color_set": color if color else "custom_color"})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
+        return json.dumps({"success": False, "message": exceptionMessage})
 
 def cartoon_cmd(type, selection=None):
     """
@@ -60,9 +60,9 @@ def cartoon_cmd(type, selection=None):
             return json.dumps({"status": "success", "type_set": type, "selection_set": selection})
         else:
             cmd.cartoon(type)
-            return json.dumps({"status": "success", "type_set": type})
+            return json.dumps({"success": True, "type_set": type})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
+        return json.dumps({"success": False, "message": exceptionMessage})
 
 def refresh_cmd():
     """
@@ -75,6 +75,6 @@ def refresh_cmd():
     """
     try:
         cmd.refresh()
-        return json.dumps({"status": "success", "message": "Scene refreshed"})
+        return json.dumps({"success": True, "message": "Scene refreshed"})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
+        return json.dumps({"success": False, "message": exceptionMessage})

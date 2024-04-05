@@ -20,6 +20,7 @@ load_dotenv()
 api_key = os.getenv('API_KEY')
 client = OpenAI(api_key=api_key)
 
+
 def run_conversation(newMessage, verbose):
     """
     Executes a conversation with the OpenAI API and returns the message history object.
@@ -107,8 +108,8 @@ def run_conversation(newMessage, verbose):
         response_message = second_response.choices[0].message
         messages.append(response_message)
 
-        # Step 11: Process message history into chat format and format for return
-        return style_messages(process_messages(messages, verbose))
+        # Step 11: Return JSON-style message history
+        return messages
 
 
 def process_messages(messages, verbose):
@@ -130,6 +131,7 @@ def process_messages(messages, verbose):
     processed_messages = []
     tool_call_requests = []  # To store details about the tool calls
     tool_call_responses = {}  # To map responses to their calls
+    toolCallsResults = []
 
     # First, categorize messages and collect tool call responses
     for message in messages:
@@ -153,6 +155,11 @@ def process_messages(messages, verbose):
                         processed_messages.append(
                             f'\nTool Call: "{tool_call.function.name}"; Arguments: {arguments}"; Returned: {tool_content}\n'
                         )
+                        toolCallsResults.append({
+                            "toolCallName": tool_call.function.name,
+                            "toolCallArguments": arguments,
+                            "toolCallResponse": tool_content
+                        })
 
         elif isinstance(message, dict) and message['role'] == 'user':
             if verbose:
@@ -160,7 +167,7 @@ def process_messages(messages, verbose):
             else:
                 processed_messages.append(f"\nUser:\n{message['content']}")
 
-    return "\n".join(processed_messages)
+    return "\n".join(processed_messages), toolCallsResults
 
 
 def style_messages(messages):
