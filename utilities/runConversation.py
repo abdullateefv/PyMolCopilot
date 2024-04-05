@@ -15,6 +15,9 @@ from backend.appearanceFunctions import bg_color
 from backend.appearanceFunctions import attach_cmd
 from backend.appearanceFunctions import backward_cmd
 from backend.appearanceFunctions import button_cmd
+from backend.appearanceFunctions import fetch_cmd
+from backend.appearanceFunctions import deselect
+from backend.appearanceFunctions import id_atom
 
 # Load API Key from .env file
 load_dotenv()
@@ -76,7 +79,10 @@ def run_conversation(newMessage, verbose):
             "bg_color" : bg_color,
             "attach_cmd" :  attach_cmd,
             "backward_cmd" : backward_cmd,
-            "button_cmd" : button_cmd
+            "button_cmd" : button_cmd,
+            "fetch_cmd" : fetch_cmd,
+            "deselect" : deselect,
+            "id_atom" : id_atom
             }
         
         for tool_call in tool_calls:

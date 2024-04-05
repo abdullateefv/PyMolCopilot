@@ -98,3 +98,81 @@ def button_cmd(button, modifier, action):
         return json.dumps({"status": "success", "message": "Button redefined successfully"})
     except Exception as e:
         return json.dumps({"status": "failed", "message": f"Failed to redefine button: {str(e)}"})
+
+import json
+from pymol import cmd
+
+def fetch_cmd(code, name=None, state=None, type="cif", async_=0, path=None):
+    """
+    Downloads a file from the internet (if possible).
+
+    Parameters
+    ----------
+    code : str
+        A single PDB identifier or a list of identifiers. Supports 5-letter codes for fetching single chains (e.g., "1a00A").
+    name : str, optional
+        The object name into which the file should be loaded.
+    state : int, optional
+        The state number into which the file should be loaded.
+    type : str, optional
+        The file type to fetch. Options include cif, pdb, pdb1, 2fofc, fofc, emd, cid, sid. Default is "cif".
+    async_ : int, optional
+        Whether to download in the background and not block the PyMOL command line. Default is 0.
+    path : str, optional
+        The path to save the downloaded file.
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON-formatted string.
+    """
+    try:
+        cmd.fetch(code, name, state, type, async_, path)
+        return json.dumps({"status": "success", "message": "File fetched successfully"})
+    except Exception as e:
+        return json.dumps({"status": "failed", "message": f"Failed to fetch file: {str(e)}"})
+
+
+
+def deselect():
+    """
+    Disables any and all visible selections.
+
+    Returns
+    -------
+    None
+        No return value.
+    """
+    try:
+        cmd.deselect()
+        return json.dumps({"status": "success", "message": "Selections deselected successfully"})
+    except Exception as e:
+        return json.dumps({"status": "failed", "message": f"Failed to deselect selections: {str(e)}"})
+
+import json
+from pymol import cmd
+
+def id_atom(selection):
+    """
+    Returns the original source ID of a single atom.
+
+    Parameters
+    ----------
+    selection : str
+        Atom selection in PyMOL.
+
+    Returns
+    -------
+    int
+        Original source ID of the atom.
+
+    Raises
+    ------
+    ValueError
+        If the atom does not exist or if the selection corresponds to multiple atoms.
+    """
+    try:
+        atom_id = cmd.id_atom(selection)
+        return json.dumps({"status": "success", "atom_id": atom_id})
+    except Exception as e:
+        return json.dumps({"status": "failed", "message": f"Failed to retrieve atom ID: {str(e)}"})

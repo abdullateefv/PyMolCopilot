@@ -112,4 +112,77 @@
       }
     }
   }
+  ,
+  {
+    "type": "function",
+    "function": {
+      "name": "fetch_cmd",
+      "description": "Downloads a file from the internet (if possible).",
+      "parameters": {
+        "code": {
+          "type": "str",
+          "description": "A single PDB identifier or a list of identifiers. Supports 5-letter codes for fetching single chains (e.g., '1a00A')."
+        },
+        "name": {
+          "type": "str",
+          "description": "The object name into which the file should be loaded. (optional)"
+        },
+        "state": {
+          "type": "int",
+          "description": "The state number into which the file should be loaded. (optional)"
+        },
+        "type": {
+          "type": "str",
+          "description": "The file type to fetch. Options include cif, pdb, pdb1, 2fofc, fofc, emd, cid, sid. Default is 'cif'. (optional)"
+        },
+        "async_": {
+          "type": "int",
+          "description": "Whether to download in the background and not block the PyMOL command line. Default is 0. (optional)"
+        },
+        "path": {
+          "type": "str",
+          "description": "The path to save the downloaded file. (optional)"
+        }
+      },
+      "returns": {
+        "type": "str",
+        "description": "Result of command execution as JSON-formatted string."
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "deselect",
+      "description": "Disables any and all visible selections.",
+      "parameters": [],
+      "returns": {
+        "type": "None",
+        "description": "No return value."
+      }
+    }
+  },
+  
+  {
+  "type": "function",
+  "function": {
+    "name": "id_atom",
+    "description": "Returns the original source ID of a single atom or raises an exception if the atom does not exist or if the selection corresponds to multiple atoms.",
+    "parameters": [
+      {
+        "name": "selection",
+        "type": "str",
+        "description": "Atom selection in PyMOL."
+      }
+    ],
+    "returns": {
+      "type": "int",
+      "description": "Original source ID of the atom."
+    },
+    "raises": {
+      "type": "ValueError",
+      "description": "If the atom does not exist or if the selection corresponds to multiple atoms."
+    }
+  }
+  }
 ]
