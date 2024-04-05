@@ -56,11 +56,10 @@ pymol
 
 # File Structure
 ```
-PymolCopilot/  
+PyMolCopilot/  
 ├── backend/  
 │   ├── toolsDescription.json  
 │   ├── appearanceFunctions.py  
-│   ├── weatherFunctions.py  
 │   └── ...  
 ├── frontend/ 
 │   ├── chatWindowComponent/  
@@ -69,12 +68,17 @@ PymolCopilot/
 │   │   ├── chatWindowView.ui
 │   │   └── ...  
 │   └── ...  
+├── tests/  
+│   ├── conftest.py
+│   ├── test_appearanceFunctions.py  
+│   └── ...  
 ├── utilities/  
 │   ├── runConversation.py  
 │   └── ...  
-├── .env  
-├── .gitignore  
+├── .env
+├── .gitignore
 ├── __init__.py  
+├── architecture.png
 ├── environment.yml  
 ├── README.md
 └── title.jpg
