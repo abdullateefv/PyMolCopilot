@@ -6,6 +6,7 @@ Note: Only aesthetic functions
 import json
 from pymol import cmd
 
+
 def bgColor_cmd(color=None, rgb=None):
     """
     Sets the background color
@@ -36,7 +37,8 @@ def bgColor_cmd(color=None, rgb=None):
 
         return json.dumps({"success": True, "bg_color_set": color if color else "custom_color"})
     except Exception as exceptionMessage:
-        return json.dumps({"success": False, "message": exceptionMessage})
+        return json.dumps({"success": False, "message": str(exceptionMessage)})
+
 
 def cartoon_cmd(type, selection=None):
     """
@@ -57,12 +59,13 @@ def cartoon_cmd(type, selection=None):
     try:
         if selection:
             cmd.cartoon(type, selection)
-            return json.dumps({"status": "success", "type_set": type, "selection_set": selection})
+            return json.dumps({"success": True, "type_set": type, "selection_set": selection})
         else:
             cmd.cartoon(type)
             return json.dumps({"success": True, "type_set": type})
     except Exception as exceptionMessage:
-        return json.dumps({"success": False, "message": exceptionMessage})
+        return json.dumps({"success": False, "message": str(exceptionMessage)})
+
 
 def refresh_cmd():
     """
@@ -77,4 +80,4 @@ def refresh_cmd():
         cmd.refresh()
         return json.dumps({"success": True, "message": "Scene refreshed"})
     except Exception as exceptionMessage:
-        return json.dumps({"success": False, "message": exceptionMessage})
+        return json.dumps({"success": False, "message": str(exceptionMessage)})
