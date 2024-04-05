@@ -77,9 +77,9 @@ def refresh_cmd():
     """
     try:
         cmd.refresh()
-        return json.dumps({"status": "success", "message": "Scene refreshed"})
+        return json.dumps({"success": True, "message": "Scene refreshed"})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
+        return json.dumps({"success": False, "message": str(exceptionMessage)})
 
 def color_cmd(color, selection="(all)"):
     """
@@ -102,6 +102,6 @@ def color_cmd(color, selection="(all)"):
         if cmd.get_color_index(color) == -1:
                 raise ValueError("Invalid color name")
         cmd.color(color, selection)
-        return json.dumps({"status": "success", "color_set": color, "selection": selection})
+        return json.dumps({"success": True, "color_set": color, "selection": selection})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
+        return json.dumps({"success": False, "message": exceptionMessage})
