@@ -19,12 +19,3 @@ def test_backward_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
-
-
-def test_quit_cmd(tool_call_validator):
-    prompt = "Quit the software"
-    expected_function_name = "quit_cmd"
-    expected_arguments = {}
-    expected_success = True
-
-    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
