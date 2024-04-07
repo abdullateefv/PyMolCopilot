@@ -80,7 +80,8 @@ def run_conversation(newMessage, verbose):
             "attach_cmd": attach_cmd,
             "button_cmd": button_cmd,
             "backward_cmd": backward_cmd,
-            "color_cmd": color_cmd
+            "color_cmd": color_cmd,
+            "quit_cmd": quit_cmd
         }
 
         for tool_call in tool_calls:

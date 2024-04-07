@@ -224,5 +224,13 @@
         "required": ["color"]
       }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "quit_cmd",
+      "description": "Terminates the program.",
+      "parameters": {}
+    }
   }
 ]
