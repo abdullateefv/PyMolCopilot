@@ -81,7 +81,7 @@ def refresh_cmd():
     except Exception as exceptionMessage:
         return json.dumps({"success": False, "message": str(exceptionMessage)})
 
-def color_cmd(color, selection="(all)"):
+def color_cmd(color, selection_set="(all)"):
     """
     Changes the color of objects or atoms.
     Parameters
@@ -101,7 +101,7 @@ def color_cmd(color, selection="(all)"):
     try:
         if cmd.get_color_index(color) == -1:
                 raise ValueError("Invalid color name")
-        cmd.color(color, selection)
-        return json.dumps({"success": True, "color_set": color, "selection": selection})
+        cmd.color(color, selection_set)
+        return json.dumps({"success": True, "color_set": color, "selection": selection_set})
     except Exception as exceptionMessage:
         return json.dumps({"success": False, "message": exceptionMessage})
