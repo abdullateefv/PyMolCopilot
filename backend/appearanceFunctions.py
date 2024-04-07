@@ -104,4 +104,4 @@ def color_cmd(color, selection_set="(all)"):
         cmd.color(color, selection_set)
         return json.dumps({"success": True, "color_set": color, "selection": selection_set})
     except Exception as exceptionMessage:
-        return json.dumps({"success": False, "message": exceptionMessage})
+        return json.dumps({"success": False, "message": str(exceptionMessage)})
