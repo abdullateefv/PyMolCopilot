@@ -202,5 +202,27 @@
         ]
       }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "color_cmd",
+      "description": "Changes the color of objects or atoms.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "description": "Color name or number."
+          },
+          "selection": {
+            "type": "string",
+            "description": "Selection expression or name pattern corresponding to the atoms or objects to be colored.",
+            "default": "(all)"
+          }
+        },
+        "required": ["color"]
+      }
+    }
   }
 ]

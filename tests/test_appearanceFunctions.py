@@ -28,3 +28,11 @@ def test_cartoon_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_color_cmd(tool_call_validator):
+    prompt = "Set the color of selection to yellow"
+    expected_function_name = "color_cmd"
+    expected_arguments = {'color': 'yellow'}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
