@@ -5,6 +5,7 @@ This file contains any functions related to manipulating or performing CRUD oper
 import json
 from pymol import cmd
 
+
 def create_cmd(name, selection):
     """
     Creates a new molecule object from a selection.  It can also be used to update an existing object to the selection.
@@ -23,13 +24,14 @@ def create_cmd(name, selection):
     """
     try:
         cmd.create(name, selection)
-        return json.dumps({"status": "success", "name_set": name, "selection_used": selection})
+        return json.dumps({"success": True, "name_set": name, "selection_used": selection})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "error": exceptionMessage})
+        return json.dumps({"success": False, "error": str(exceptionMessage)})
+
 
 def bond_cmd(atom1, atom2):
     """
-   creates a bond between two selections
+    Creates a bond between two selections
 
     Parameters
     ----------
@@ -44,9 +46,10 @@ def bond_cmd(atom1, atom2):
     """
     try:
         cmd.bond(atom1, atom2)
-        return json.dumps({"status": "success", "message": "Atoms are bonded"})
+        return json.dumps({"success": True, "message": "Selections have been bonded"})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
+        return json.dumps({"success": False, "message": exceptionMessage})
+
 
 def protect_cmd(selection):
     """
@@ -64,9 +67,11 @@ def protect_cmd(selection):
     """
     try:
         cmd.protect(selection)
-        return json.dumps({"status": "success", "protected_atoms": selection, "message": "Given selection is protected."})
+        return json.dumps(
+            {"success": True, "protected_atoms": selection, "message": "Given selection has been protected"})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
+        return json.dumps({"success": False, "message": str(exceptionMessage)})
+
 
 def attach_cmd(element, geometry, valence):
     """
@@ -76,7 +81,7 @@ def attach_cmd(element, geometry, valence):
     ----------
     element : str
         The chemical element of the atom, e.g. 'H' for hydrogen
-    geometry : str
+    geometry : int
         The geometry of the atom, e.g. 1
     valence : int
         The valence of the atom, e.g. 1
@@ -88,6 +93,6 @@ def attach_cmd(element, geometry, valence):
     """
     try:
         cmd.attach(element, geometry, valence)
-        return json.dumps({"status": "success", "message": "Atom attached successfully"})
+        return json.dumps({"success": True, "message": "Atom attached successfully"})
     except Exception as e:
-        return json.dumps({"status": "failed", "message": "Failed to attach atom"})
+        return json.dumps({"success": False, "message": "Failed to attach atom"})

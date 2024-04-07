@@ -25,6 +25,6 @@ def button_cmd(button, modifier, action):
     """
     try:
         cmd.button(button, modifier, action)
-        return json.dumps({"status": "success", "message": "Button redefined successfully"})
+        return json.dumps({"success": True, "message": "Button redefined successfully"})
     except Exception as e:
-        return json.dumps({"status": "failed", "message": f"Failed to redefine button: {str(e)}"})
+        return json.dumps({"success": False, "message": f"Failed to redefine button: {str(e)}"})
