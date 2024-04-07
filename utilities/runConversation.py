@@ -11,6 +11,7 @@ from openai import OpenAI
 from openai.types.chat import ChatCompletionMessage
 
 from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd, refresh_cmd, color_cmd
+from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd, refresh_cmd, color_cmd
 from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd
 from backend.viewFunctions import origin_cmd, backward_cmd, quit_cmd
 from backend.settingsFunctions import button_cmd
@@ -19,6 +20,7 @@ from backend.settingsFunctions import button_cmd
 load_dotenv()
 api_key = os.getenv('API_KEY')
 client = OpenAI(api_key=api_key)
+
 
 
 def run_conversation(newMessage, verbose):
@@ -133,6 +135,7 @@ def process_messages(messages, verbose):
     processed_messages = []
     tool_call_requests = []  # To store details about the tool calls
     tool_call_responses = {}  # To map responses to their calls
+    toolCallsResults = []
     toolCallsResults = []
 
     # First, categorize messages and collect tool call responses
