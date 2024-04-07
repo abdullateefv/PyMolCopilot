@@ -111,8 +111,7 @@
         ]
       }
     }
-  }
-  ,
+  },
   {
     "type": "function",
     "function": {
@@ -162,13 +161,12 @@
       }
     }
   },
-  
   {
-  "type": "function",
-  "function": {
-    "name": "id_atom",
-    "description": "Returns the original source ID of a single atom or raises an exception if the atom does not exist or if the selection corresponds to multiple atoms.",
-    "parameters": {
+    "type": "function",
+    "function": {
+      "name": "id_atom",
+      "description": "Returns the original source ID of a single atom or raises an exception if the atom does not exist or if the selection corresponds to multiple atoms.",
+      "parameters": {
         "name": "selection",
         "type": "str",
         "description": "Atom selection in PyMOL."
