@@ -105,4 +105,4 @@ def h_fill_cmd():
         cmd.h_fill()
         return json.dumps({"status": "success", "message": "Successfully executed h_fill"})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "message": exceptionMessage})
+        return json.dumps({"status": "failed", "message": str(exceptionMessage)})
