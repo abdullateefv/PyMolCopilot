@@ -206,7 +206,7 @@
   {
     "type": "function",
     "function": {
-      "name": "h_fill",
+      "name": "h_fill_cmd",
       "description": "Removes and replaces hydrogens on the atom or bond picked for editing.",
       "parameters": {}
     }
