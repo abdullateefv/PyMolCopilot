@@ -37,3 +37,11 @@ def test_attach_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_h_fill_cmd(tool_call_validator):
+    prompt = "Remove and replace hydrogens from the selection"
+    expected_function_name = "h_fill_cmd"
+    expected_arguments = {}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
