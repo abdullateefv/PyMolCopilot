@@ -118,67 +118,71 @@
       "name": "fetch_cmd",
       "description": "Downloads a file from the internet (if possible).",
       "parameters": {
-        "code": {
-          "type": "str",
-          "description": "A single PDB identifier or a list of identifiers. Supports 5-letter codes for fetching single chains (e.g., '1a00A')."
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "A single PDB identifier or a list of identifiers. Supports 5-letter codes for fetching single chains (e.g., '1a00A')."
+          },
+          "name": {
+            "type": "string",
+            "description": "The object name into which the file should be loaded."
+          },
+          "state": {
+            "type": "integer",
+            "description": "The state number into which the file should be loaded."
+          },
+          "type": {
+            "type": "string",
+            "description": "The file type to fetch. Options include cif, pdb, pdb1, 2fofc, fofc, emd, cid, sid.",
+            "enum": ["cif", "pdb", "pdb1", "2fofc", "fofc", "emd", "cid", "sid"],
+            "default": "cif"
+          },
+          "async_": {
+            "type": "integer",
+            "description": "Whether to download in the background and not block the PyMOL command line."
+          },
+          "path": {
+            "type": "string",
+            "description": "The path to save the downloaded file."
+          }
         },
-        "name": {
-          "type": "str",
-          "description": "The object name into which the file should be loaded. (optional)"
-        },
-        "state": {
-          "type": "int",
-          "description": "The state number into which the file should be loaded. (optional)"
-        },
-        "type": {
-          "type": "str",
-          "description": "The file type to fetch. Options include cif, pdb, pdb1, 2fofc, fofc, emd, cid, sid. Default is 'cif'. (optional)"
-        },
-        "async_": {
-          "type": "int",
-          "description": "Whether to download in the background and not block the PyMOL command line. Default is 0. (optional)"
-        },
-        "path": {
-          "type": "str",
-          "description": "The path to save the downloaded file. (optional)"
-        }
-      },
-      "returns": {
-        "type": "str",
-        "description": "Result of command execution as JSON-formatted string."
+        "required": [
+          "code"
+        ]
       }
     }
   },
   {
     "type": "function",
     "function": {
-      "name": "deselect",
+      "name": "deselect_cmd",
       "description": "Disables any and all visible selections.",
-      "parameters": {},
-      "returns": {
-        "type": "None",
-        "description": "No return value."
+      "parameters": {
+        "type": "object",
+        "properties": {
+          }
+        },
+        "required": []
       }
-    }
-  },
+    },
   {
     "type": "function",
     "function": {
-      "name": "id_atom",
-      "description": "Returns the original source ID of a single atom or raises an exception if the atom does not exist or if the selection corresponds to multiple atoms.",
+      "name": "id_atom_cmd",
+      "description": "Returns the original source ID of a single atom",
       "parameters": {
-        "name": "selection",
-        "type": "str",
-        "description": "Atom selection in PyMOL."
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "Atom selection in PyMOL"
+          }
+        },
+        "required": [
+          "selection"
+        ]
       }
-    },
-    "returns": {
-      "type": "int",
-      "description": "Original source ID of the atom."
-    },
-    "raises": {
-      "type": "ValueError",
-      "description": "If the atom does not exist or if the selection corresponds to multiple atoms."
     }
   }
 ]

@@ -102,7 +102,7 @@ def button_cmd(button, modifier, action):
 import json
 from pymol import cmd
 
-def fetch_cmd(code, name=None, state=None, type="cif", async_=0, path=None):
+def fetch_cmd(code, name=None, state=None, type="", async_=0, path=None):
     """
     Downloads a file from the internet (if possible).
 
@@ -125,16 +125,34 @@ def fetch_cmd(code, name=None, state=None, type="cif", async_=0, path=None):
     -------
     results : str
         Result of command execution as JSON-formatted string.
+        
     """
+    
     try:
-        cmd.fetch(code, name, state, type, async_, path)
+        if (name==None and state==None and path==None):
+            cmd.fetch(code=code, type=type, async_=async_)
+        elif(name==None and path==None):
+            cmd.fetch(code=code, state=state, type=type, async_=async_)
+        elif(name==None and state==None):
+            cmd.fetch(code=code, type=type, async_=async_, path=path)
+        elif(state==None and path==None):
+            cmd.fetch(code=code, name=name, type=type, async_=async_)
+        elif(name==None):
+            cmd.fetch(code=code, state=state, type=type, async_=async_, path=path)
+        elif(state==None):
+            cmd.fetch(code=code, name=name, type=type, async_=async_, path=path)
+        elif(path==None):
+            cmd.fetch(code=code, name=name, state=state, type=type, async_=async_)
+        else:
+            cmd.fetch(code=code, name=name, state= state, type=type, async_=async_, path=path)
+            
         return json.dumps({"status": "success", "message": "File fetched successfully"})
     except Exception as e:
         return json.dumps({"status": "failed", "message": f"Failed to fetch file: {str(e)}"})
 
 
 
-def deselect():
+def deselect_cmd():
     """
     Disables any and all visible selections.
 
@@ -152,7 +170,7 @@ def deselect():
 import json
 from pymol import cmd
 
-def id_atom(selection):
+def id_atom_cmd(selection):
     """
     Returns the original source ID of a single atom.
 

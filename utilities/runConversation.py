@@ -16,8 +16,8 @@ from backend.appearanceFunctions import attach_cmd
 from backend.appearanceFunctions import backward_cmd
 from backend.appearanceFunctions import button_cmd
 from backend.appearanceFunctions import fetch_cmd
-from backend.appearanceFunctions import deselect
-from backend.appearanceFunctions import id_atom
+from backend.appearanceFunctions import deselect_cmd
+from backend.appearanceFunctions import id_atom_cmd
 
 # Load API Key from .env file
 load_dotenv()
@@ -81,8 +81,8 @@ def run_conversation(newMessage, verbose):
             "backward_cmd" : backward_cmd,
             "button_cmd" : button_cmd,
             "fetch_cmd" : fetch_cmd,
-            "deselect" : deselect,
-            "id_atom" : id_atom
+            "deselect_cmd" : deselect_cmd,
+            "id_atom_cmd" : id_atom_cmd
             }
         
         for tool_call in tool_calls:
