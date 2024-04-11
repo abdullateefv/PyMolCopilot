@@ -36,3 +36,27 @@ def test_color_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_fetch_cmd(tool_call_validator):
+    prompt = "Download the file with code '1abc' and save it as 'my_file.pdb' in the background."
+    expected_function_name = "fetch_cmd"
+    expected_arguments = {'code': '1abc', 'path': 'my_file.pdb', 'async_': 1}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_deselect_cmd(tool_call_validator):
+    prompt = "Disable all current selections."
+    expected_function_name = "deselect_cmd"
+    expected_arguments = {}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_id_atom_cmd(tool_call_validator):
+    prompt = "Return the original source ID of atom 'CA' in chain A."
+    expected_function_name = "id_atom_cmd"
+    expected_arguments = {'selection': "chain A and name CA"}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
