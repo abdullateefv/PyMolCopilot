@@ -56,11 +56,10 @@ pymol
 
 # File Structure
 ```
-PymolCopilot/  
+PyMolCopilot/  
 ├── backend/  
 │   ├── toolsDescription.json  
 │   ├── appearanceFunctions.py  
-│   ├── weatherFunctions.py  
 │   └── ...  
 ├── frontend/ 
 │   ├── chatWindowComponent/  
@@ -69,12 +68,17 @@ PymolCopilot/
 │   │   ├── chatWindowView.ui
 │   │   └── ...  
 │   └── ...  
+├── tests/  
+│   ├── conftest.py
+│   ├── test_appearanceFunctions.py  
+│   └── ...  
 ├── utilities/  
 │   ├── runConversation.py  
 │   └── ...  
-├── .env  
-├── .gitignore  
+├── .env
+├── .gitignore
 ├── __init__.py  
+├── architecture.png
 ├── environment.yml  
 ├── README.md
 └── title.jpg
@@ -89,3 +93,9 @@ PymolCopilot/
   - Grouped into components where each component is an application window
 - Utilities holds middleware & functions used across application
   - Includes communication and data processing logic for OpenAI API/GPT interfacing
+
+# Architecture
+
+<p>
+  <img src="architecture.png" alt="title image" width="1100px"/>
+</p>

@@ -10,14 +10,11 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from openai.types.chat import ChatCompletionMessage
 
-from backend.weatherFunctions import get_current_weather
-from backend.appearanceFunctions import bg_color
-from backend.appearanceFunctions import attach_cmd
-from backend.appearanceFunctions import backward_cmd
-from backend.appearanceFunctions import button_cmd
-from backend.appearanceFunctions import fetch_cmd
-from backend.appearanceFunctions import deselect_cmd
-from backend.appearanceFunctions import id_atom_cmd
+from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd, refresh_cmd, color_cmd, id_atom_cmd, deselect_cmd, fetch_cmd
+from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd
+from backend.viewFunctions import origin_cmd, backward_cmd
+from backend.settingsFunctions import button_cmd
+
 
 # Load API Key from .env file
 load_dotenv()
@@ -75,16 +72,22 @@ def run_conversation(newMessage, verbose):
         # Step 7: Call the desired functions
         # TODO: MUST UPDATE THIS WHEN NEW FUNCTIONS ARE ADDED
         available_functions = {
-            "get_current_weather" : get_current_weather,
-            "bg_color" : bg_color,
-            "attach_cmd" :  attach_cmd,
-            "backward_cmd" : backward_cmd,
-            "button_cmd" : button_cmd,
-            "fetch_cmd" : fetch_cmd,
-            "deselect_cmd" : deselect_cmd,
-            "id_atom_cmd" : id_atom_cmd
-            }
-        
+            "origin_cmd": origin_cmd,
+            "bgColor_cmd": bgColor_cmd,
+            "cartoon_cmd": cartoon_cmd,
+            "bond_cmd": bond_cmd,
+            "create_cmd": create_cmd,
+            "protect_cmd": protect_cmd,
+            "refresh_cmd": refresh_cmd,
+            "attach_cmd": attach_cmd,
+            "button_cmd": button_cmd,
+            "backward_cmd": backward_cmd,
+            "color_cmd": color_cmd,
+            "fetch_cmd": fetch_cmd,
+            "id_atom_cmd": id_atom_cmd,
+            "deselect_cmd": deselect_cmd
+        }
+
         for tool_call in tool_calls:
             function_name = tool_call.function.name
             function_to_call = available_functions[function_name]
@@ -111,8 +114,8 @@ def run_conversation(newMessage, verbose):
         response_message = second_response.choices[0].message
         messages.append(response_message)
 
-        # Step 11: Process message history into chat format and format for return
-        return style_messages(process_messages(messages, verbose))
+        # Step 11: Return JSON-style message history
+        return messages
 
 
 def process_messages(messages, verbose):
@@ -134,6 +137,7 @@ def process_messages(messages, verbose):
     processed_messages = []
     tool_call_requests = []  # To store details about the tool calls
     tool_call_responses = {}  # To map responses to their calls
+    toolCallsResults = []
 
     # First, categorize messages and collect tool call responses
     for message in messages:
@@ -157,6 +161,11 @@ def process_messages(messages, verbose):
                         processed_messages.append(
                             f'\nTool Call: "{tool_call.function.name}"; Arguments: {arguments}"; Returned: {tool_content}\n'
                         )
+                        toolCallsResults.append({
+                            "toolCallName": tool_call.function.name,
+                            "toolCallArguments": arguments,
+                            "toolCallResponse": tool_content
+                        })
 
         elif isinstance(message, dict) and message['role'] == 'user':
             if verbose:
@@ -164,7 +173,7 @@ def process_messages(messages, verbose):
             else:
                 processed_messages.append(f"\nUser:\n{message['content']}")
 
-    return "\n".join(processed_messages)
+    return "\n".join(processed_messages), toolCallsResults
 
 
 def style_messages(messages):
