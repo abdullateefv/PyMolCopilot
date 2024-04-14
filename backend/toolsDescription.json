@@ -224,5 +224,26 @@
         "required": ["color"]
       }
     }
-  }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "move_cmd",
+      "description": "Translates the camera about one of the three primary axes.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "axis": {
+            "type": "string",
+            "description": "The axis along which to move the camera ('x', 'y', or 'z')"
+          },
+          "distance": {
+            "type": "number",
+            "description": "The distance by which to move the camera along the specified axis"
+          }
+        },
+        "required": ["axis", "distance"]
+      }
+    }
+  }  
 ]
