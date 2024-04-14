@@ -37,3 +37,11 @@ def test_attach_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_indicate_cmd(tool_call_validator):
+    prompt = "Show a visual representation of the all the molecules"
+    expected_function_name = "indicate_cmd"
+    expected_arguments = {}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)

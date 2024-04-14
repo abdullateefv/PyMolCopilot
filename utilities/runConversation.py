@@ -11,7 +11,7 @@ from openai import OpenAI
 from openai.types.chat import ChatCompletionMessage
 
 from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd, refresh_cmd, color_cmd
-from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd
+from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd, indicate_cmd
 from backend.viewFunctions import origin_cmd, backward_cmd
 from backend.settingsFunctions import button_cmd
 
@@ -80,7 +80,8 @@ def run_conversation(newMessage, verbose):
             "attach_cmd": attach_cmd,
             "button_cmd": button_cmd,
             "backward_cmd": backward_cmd,
-            "color_cmd": color_cmd
+            "color_cmd": color_cmd,
+            "indicate_cmd": indicate_cmd
         }
 
         for tool_call in tool_calls:

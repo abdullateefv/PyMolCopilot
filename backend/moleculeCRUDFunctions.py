@@ -96,3 +96,23 @@ def attach_cmd(element, geometry, valence):
         return json.dumps({"success": True, "message": "Atom attached successfully"})
     except Exception as e:
         return json.dumps({"success": False, "message": "Failed to attach atom"})
+
+def indicate_cmd(selection="all"):
+    """
+    Shows a visual representation of an atom selection
+
+    Parameters
+    ----------
+    selection : str, optional (Default is "all")
+        The atom selection to indicate.
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.indicate(selection)
+        return json.dumps({"success": True, "message": "Atom selection indicated"})
+    except Exception as exceptionMessage:
+        return json.dumps({"success": False, "message": str(exceptionMessage)})

@@ -224,5 +224,23 @@
         "required": ["color"]
       }
     }
-  }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "indicate_cmd",
+      "description": "Shows a visual representation of an atom selection",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "The atom selection to indicate. Default is 'all'",
+            "default": "all"
+          }
+        },
+        "required": []
+      }
+    }
+  }  
 ]
