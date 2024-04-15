@@ -224,5 +224,30 @@
         "required": ["color"]
       }
     }
-  }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "orient_cmd",
+      "description": "Aligns the principal components of the atoms in the selection with the XYZ axes.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "The name of the selection or object to be oriented. Defaults to 'all' if not provided."
+          },
+          "state": {
+            "type": "integer",
+            "description": "The state of the object. Defaults to 0 if not provided."
+          },
+          "animate": {
+            "type": "number",
+            "description": "Animation duration in seconds. Defaults to 0.0 if not provided."
+          }
+        }
+      },
+      "required": []
+    }
+  }  
 ]
