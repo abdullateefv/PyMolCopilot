@@ -50,3 +50,24 @@ def backward_cmd():
         return json.dumps({"success": True, "message": "Backward function successfully called"})
     except Exception as errorMessage:
         return json.dumps({"success": False, "message": str(errorMessage)})
+
+def index_cmd(selection='all'):
+    """
+    Returns a list of tuples corresponding to the object name and index of the atoms in the selection.
+    The default value of string selection is all.
+
+    Parameters
+    ----------
+    selection: str, optional (default is 'all')
+        The name of the selection for which to get the index
+
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        index_list = cmd.index(selection)
+        return json.dumps({"success": True, 'index_list': index_list})
+    except Exception as errorMessage:
+        return json.dumps({"success": False, 'message': str(errorMessage)})

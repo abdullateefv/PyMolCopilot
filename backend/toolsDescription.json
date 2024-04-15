@@ -224,5 +224,21 @@
         "required": ["color"]
       }
     }
-  }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "index_cmd",
+      "description": "Returns a list of tuples corresponding to the object name and index of the atoms in the selection. The default value of string selection is all.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "The name of the selection for which to get the index. Defaults to 'all' if not provided."
+          }
+        }
+      }
+    }
+  }  
 ]

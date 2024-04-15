@@ -19,3 +19,11 @@ def test_backward_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_index_cmd(tool_call_validator):
+    prompt = "Return a list of tuples corresponding to the object name and index of all the atoms in the selection"
+    expected_function_name = "index_cmd"
+    expected_arguments = {}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
