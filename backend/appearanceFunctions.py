@@ -180,9 +180,9 @@ def button_cmd(button, modifier, action):
 import json
 from pymol import cmd
 
-def fetch_cmd(code, name=None, state=None, type="", async_=0, path=None):
+def fetch_cmd(code, name=None, state=None, type='', async_=1, path=None):
     """
-    Downloads a file from the internet (if possible).
+    Downloads a file '13AN' from the internet (if possible).
 
     Parameters
     ----------
@@ -224,12 +224,92 @@ def fetch_cmd(code, name=None, state=None, type="", async_=0, path=None):
         else:
             cmd.fetch(code=code, name=name, state= state, type=type, async_=async_, path=path)
             
-        return json.dumps({"status": "success", "message": "File fetched successfully"})
+        return json.dumps({ "success" : True, "message": "File fetched successfully"})
     except Exception as e:
-        return json.dumps({"status": "failed", "message": f"Failed to fetch file: {str(e)}"})
+        return json.dumps({"success" : False, "message": f"Failed to fetch file: {str(e)}"})
+
+
+# #---trial
+# import json
+# from pymol import cmd
 
 
 
+
+
+
+
+# def fetch_cmd(code, name=None, state=None, type="", async_=0, path=None):
+#     """
+#     Downloads a file from the internet (if possible).
+
+#     Parameters
+#     ----------
+#     code : str
+#         A single PDB identifier or a list of identifiers. Supports 5-letter codes for fetching single chains (e.g., "1a00A").
+#     name : str, optional
+#         The object name into which the file should be loaded.
+#     state : int, optional
+#         The state number into which the file should be loaded.
+#     type : str, optional
+#         The file type to fetch. Options include cif, pdb, pdb1, 2fofc, fofc, emd, cid, sid. Default is "cif".
+#     async_ : int, optional
+#         Whether to download in the background and not block the PyMOL command line. Default is 0.
+#     path : str, optional
+#         The path to save the downloaded file.
+
+#     Returns
+#     -------
+#     results : str
+#         Result of command execution as JSON-formatted string.
+        
+#     """
+    
+#     try:
+#         # cmd.async_ = async_  # Update async_ parameter
+#         if (name==None and state==None and path==None):
+#             cmd.fetch(code=code, type=type, async_=async_)
+#         elif(name==None and path==None):
+#             cmd.fetch(code=code, state=state, type=type, async_=async_)
+#         elif(name==None and state==None):
+#             cmd.fetch(code=code, type=type, async_=async_, path=path)
+#         elif(state==None and path==None):
+#             cmd.fetch(code=code, name=name, type=type, async_=async_)
+#         elif(name==None):
+#             cmd.fetch(code=code, state=state, type=type, async_=async_, path=path)
+#         elif(state==None):
+#             cmd.fetch(code=code, name=name, type=type, async_=async_, path=path)
+#         elif(path==None):
+#             cmd.fetch(code=code, name=name, state=state, type=type, async_=async_)
+#         else:
+#             cmd.fetch(code=code, name=name, state= state, type=type, async_=async_, path=path)
+            
+#         return json.dumps({"status": "success", "message": "File fetched successfully"})
+#     except Exception as e:
+#         return json.dumps({"status": "failed", "message": f"Failed to fetch file: {str(e)}"})
+
+
+
+import json
+from pymol import cmd
+
+# def deselect_cmd():
+#     """
+#     Disables any and all visible selections.
+
+#     Returns
+#     -------
+#     str
+#         JSON-formatted string indicating the status of the operation.
+#     """
+#     try:
+#         cmd.deselect()
+#         return json.dumps({"status": "success", "message": "Selections deselected successfully"})
+#     except Exception as e:
+#         return json.dumps({"status": "failed", "message": f"Failed to deselect selections: {str(e)}"})
+
+
+#------ ORIGINAL
 def deselect_cmd():
     """
     Disables any and all visible selections.
@@ -241,12 +321,43 @@ def deselect_cmd():
     """
     try:
         cmd.deselect()
-        return json.dumps({"status": "success", "message": "Selections deselected successfully"})
+        return json.dumps({"success" : True, "message": "Selections deselected successfully"})
     except Exception as e:
-        return json.dumps({"status": "failed", "message": f"Failed to deselect selections: {str(e)}"})
+        return json.dumps({"success" : False, "message": f"Failed to deselect selections: {str(e)}"})
+
+deselect_cmd()
 
 import json
 from pymol import cmd
+
+# def id_atom_cmd(selection):
+#     """
+#     Returns the original source ID of a single atom.
+
+#     Parameters
+#     ----------
+#     selection : str
+#         Atom selection in PyMOL.
+
+#     Returns
+#     -------
+#     int
+#         Original source ID of the atom.
+
+#     Raises
+#     ------
+#     ValueError
+#         If the atom does not exist or if the selection corresponds to multiple atoms.
+#     """
+#     try:
+#         atom_id = cmd.id_atom(selection)
+#         return json.dumps({"status": "success", "atom_id": atom_id})
+#     except Exception as e:
+#         return json.dumps({"status": "failed", "message": f"Failed to retrieve atom ID: {str(e)}"})
+#         return json.dumps({"success": False, "message": str(exceptionMessage)})
+
+
+
 
 def id_atom_cmd(selection):
     """
@@ -269,7 +380,9 @@ def id_atom_cmd(selection):
     """
     try:
         atom_id = cmd.id_atom(selection)
-        return json.dumps({"status": "success", "atom_id": atom_id})
+        return json.dumps({"success" : True, "atom_id": atom_id})
     except Exception as e:
-        return json.dumps({"status": "failed", "message": f"Failed to retrieve atom ID: {str(e)}"})
-        return json.dumps({"success": False, "message": str(exceptionMessage)})
+        return json.dumps({"success" : False, "message": f"Failed to retrieve atom ID: {str(e)}"})
+
+
+

@@ -56,4 +56,3 @@ def tool_call_validator(run_conversation_fixture):
 
     return _validator
 
-
