@@ -94,5 +94,24 @@ def attach_cmd(element, geometry, valence):
     try:
         cmd.attach(element, geometry, valence)
         return json.dumps({"success": True, "message": "Atom attached successfully"})
-    except Exception as e:
-        return json.dumps({"success": False, "message": "Failed to attach atom"})
+    except Exception as exceptionMessage:
+        return json.dumps({"success": False, "message": str(exceptionMessage)})
+
+def invert_cmd():
+    """
+    Inverts the stereo-chemistry of atom (pk1), holding attached atoms (pk2) and (pk3) immobile.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.invert()
+        return json.dumps({"success": True, "message": "Stereo-chemistry inverted successfully"})
+    except Exception as exceptionMessage:
+        return json.dumps({"success": False, "message": str(exceptionMessage)})

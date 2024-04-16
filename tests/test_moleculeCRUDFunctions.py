@@ -1,6 +1,7 @@
 """
 Mocks prompts targeting BE functions in moleculeCRUDFunctions.py, tests for correct function call & success
 """
+from pymol import cmd
 
 
 def test_create_cmd(tool_call_validator):
@@ -34,6 +35,22 @@ def test_attach_cmd(tool_call_validator):
     prompt = "Attach a hydrogen with geometry 1 and valence 1"
     expected_function_name = "attach_cmd"
     expected_arguments = {'element': 'H', 'geometry': 1, 'valence': 1}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_invert_cmd(tool_call_validator):
+    # Load a dummy molecule
+    cmd.fetch("DB11331.pdb")
+
+    # Create three atom selections
+    cmd.select("pk1", "name CA")
+    cmd.select("pk2", "name CB")
+    cmd.select("pk3", "name CG")
+
+    prompt = "Invert the molecule along the selected atoms"
+    expected_function_name = "invert_cmd"
+    expected_arguments = {}
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
