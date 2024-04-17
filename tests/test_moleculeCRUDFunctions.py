@@ -41,7 +41,7 @@ def test_attach_cmd(tool_call_validator):
 
 def test_invert_cmd(tool_call_validator):
     # Load a dummy molecule
-    cmd.fetch("DB11331.pdb")
+    cmd.fetch("5R7Y", "5R7Y", 2, async_=1, path="2")
 
     # Create three atom selections
     cmd.select("pk1", "name CA")
