@@ -31,6 +31,8 @@ def make_dialog():
     # Get UI Component References
     entryField, conversationField, sendButton = form.entryField, form.conversationField, form.sendButton
 
+    entryField.setPlaceholderText("Message PyMol Assistant...")
+
     # Send Button
     def onSend():
         """
@@ -42,6 +44,7 @@ def make_dialog():
         messages = run_conversation(newPrompt)
         processedMessages, _ = process_messages(messages)
         HTMLStyledMessages = style_messages(processedMessages)
+        print(HTMLStyledMessages)
         conversationField.append(HTMLStyledMessages)
 
     # Handle Send Button Click
