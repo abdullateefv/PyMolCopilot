@@ -39,8 +39,8 @@ def make_dialog():
         """
         newPrompt = entryField.toPlainText()
 
-        messages = run_conversation(newPrompt, verbose=True)
-        processedMessages, _ = process_messages(messages, verbose=True)
+        messages = run_conversation(newPrompt)
+        processedMessages, _ = process_messages(messages)
         HTMLStyledMessages = style_messages(processedMessages)
         conversationField.append(HTMLStyledMessages)
 
