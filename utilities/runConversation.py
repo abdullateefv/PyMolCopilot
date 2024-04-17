@@ -64,14 +64,13 @@ def run_conversation(newMessage):
         Literal chat content with user prompt, copilot response, function calls processed and styled by helper functions
     """
 
-    # Step 1: Chat setup and model instructions
-
+    # Chat setup and add model instructions
     messages = []
     messages.append({"role": "system", "content": "Don't make assumptions about what values to plug into functions. "
                                                   "Ask for clarification if a user request is ambiguous."})
-
     messages.append({"role": "user", "content": newMessage})
 
+    # Get intial model response
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-0125",
         messages=messages,
@@ -83,7 +82,9 @@ def run_conversation(newMessage):
     tool_calls = response_message.tool_calls
     messages.append(response_message)
 
+    # While the model is making tool calls
     while tool_calls:
+        # Handle each tool call
         for tool_call in tool_calls:
             function_to_call = available_functions[tool_call.function.name]
             function_args = json.loads(tool_call.function.arguments)
@@ -96,21 +97,23 @@ def run_conversation(newMessage):
                     "content": function_response,
                 }
             )
+
+        # Ask model if it would like ot make more tool calls
         messages.append({"role": "system",
                          "content": "If there any more tools/functions to be called to satisfy the user's prompt that have not been called already, call/invoke them. Otherwise, summarize what has just been done for the user"})
+
+        # Get response
         response = client.chat.completions.create(
             model="gpt-3.5-turbo-0125",
             messages=messages,
             tools=tools,
-            tool_choice="auto",  # auto is default, but we'll be explicit
+            tool_choice="auto",
         )
 
         response_message = response.choices[0].message
-
         tool_calls = response_message.tool_calls
         messages.append(response_message)
 
-    pretty_print_conversation(messages)
     return messages
 
 
@@ -145,7 +148,7 @@ def process_messages(messages):
             # Process the initial assistant message and any subsequent ones
             processed_messages.append("\nAssistant:")
             if message.content is not None:
-                processed_messages.append(f"\n{message.content}")
+                processed_messages.append(f"{message.content}")
 
             # After the first assistant message, process any tool call requests
             if message.tool_calls:
@@ -156,8 +159,10 @@ def process_messages(messages):
                         tool_response = tool_call_responses[tool_call_id]
                         tool_content = json.loads(tool_response['content'])
                         arguments = json.loads(tool_call.function.arguments)
+                        prior = "<code>"
+                        after = "</code>"
                         processed_messages.append(
-                            f'\nTool Call: "{tool_call.function.name}"; Arguments: {arguments}"; Returned: {tool_content}\n'
+                            f'\n{prior}    Tool Call: "{tool_call.function.name}"; Arguments: {arguments}"; Returned: {tool_content}{after}\n'
                         )
                         toolCallsResults.append({
                             "toolCallName": tool_call.function.name,

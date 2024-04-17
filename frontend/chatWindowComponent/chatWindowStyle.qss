@@ -1,1 +1,37 @@
 /* Styles for chatWindowComponent */
+QWidget {
+    background-color: #333333;
+}
+
+QTextEdit {
+    background-color: #333333;
+    border: 1px solid #494949;
+    border-radius: 3px;
+    border-right: 0px;
+    color: white;
+    font-size: 10pt;
+}
+
+QTextBrowser {
+    background-color: #333333;
+    border: 0;
+    color: white;
+    padding: 10px;
+    font-size: 10pt;
+}
+
+QPushButton {
+    background-color: #333333;
+    border: 1px solid #494949;
+    border-radius: 3px;
+    border-left: 0px;
+    color: white
+}
+
+QPushButton:pressed {
+    background-color: #494949;
+}
+
+QPushButton:flat {
+    border: none;
+}
