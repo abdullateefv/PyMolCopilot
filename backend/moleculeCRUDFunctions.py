@@ -96,3 +96,25 @@ def attach_cmd(element, geometry, valence):
         return json.dumps({"success": True, "message": "Atom attached successfully"})
     except Exception as e:
         return json.dumps({"success": False, "message": "Failed to attach atom"})
+
+def remove_cmd(selection): 
+    """ 
+    creates a bond between two selections.
+
+    Parameters
+    ----------
+    selection: str
+
+    Returns
+    -------
+    The molecule without the selection. (since the selection will be removed.)
+
+    """
+
+    from pymol import cmd 
+
+    try: 
+        cmd.remove(selection)
+        return json.dumps({"success": True, "messsage": "The selection has successfully removed"})
+    except Exception as exceptionMessage: 
+        return json.dumps({"success": False, "message": exceptionMessage})
