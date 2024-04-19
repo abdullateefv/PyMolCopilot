@@ -224,5 +224,27 @@
         "required": ["color"]
       }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "pop_cmd",
+      "description": "Provides a mechanism of iterating through an atom selection atom by atom, where each atom is sequentially assigned to the named selection.",
+      "parameters": {
+        "type" : "object",
+        "properties" : {
+        "name": {
+          "type": "string",
+          "description": "Name of the destination selection. Example C"
+        },
+        "source": {
+          "type": "string",
+          "description": "Name of the source selection. Example sele"
+        }
+      },
+        "required" : ["name","source"]
+      }
+    }
   }
+  
 ]

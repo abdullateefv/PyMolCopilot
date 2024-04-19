@@ -1,7 +1,7 @@
 """
 Mocks prompts targeting BE functions in moleculeCRUDFunctions.py, tests for correct function call & success
 """
-
+import cmd
 
 def test_create_cmd(tool_call_validator):
     prompt = "Create a new molecule called newMol from the 'all' selection"
@@ -34,6 +34,17 @@ def test_attach_cmd(tool_call_validator):
     prompt = "Attach a hydrogen with geometry 1 and valence 1"
     expected_function_name = "attach_cmd"
     expected_arguments = {'element': 'H', 'geometry': 1, 'valence': 1}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+
+
+def test_pop_cmd(tool_call_validator):
+    cmd.select("sele")
+    prompt = "Can you pop the atom with name C and source sele "
+    expected_function_name = "pop_cmd"
+    expected_arguments = {'name': 'C', 'source': 'sele'}
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)

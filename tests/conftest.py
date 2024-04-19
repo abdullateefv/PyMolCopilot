@@ -44,7 +44,8 @@ def tool_call_validator(run_conversation_fixture):
             is_correct_function = toolCallResult["toolCallName"] == expected_function_name
             has_correct_arguments = toolCallResult["toolCallArguments"] == expected_arguments
             executed_successfully = toolCallResult["toolCallResponse"].get('success') == expected_success
-
+            error_test =  toolCallResult["toolCallResponse"].get('success') 
+            print(error_test)
             # If all conditions are met, validation passed, no need to check further
             if is_correct_function and has_correct_arguments and executed_successfully:
                 break

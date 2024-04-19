@@ -96,3 +96,28 @@ def attach_cmd(element, geometry, valence):
         return json.dumps({"success": True, "message": "Atom attached successfully"})
     except Exception as e:
         return json.dumps({"success": False, "message": "Failed to attach atom"})
+
+
+def pop_cmd(name, source):
+    """
+    Provides a mechanism of iterating through an atom selection
+    atom by atom, where each atom is sequentially assigned to the
+    named selection.
+
+    Parameters
+    ----------
+    name : str
+        Name of the destination selection.
+    source : str
+        Name of the source selection.
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON-formatted string.
+    """
+    try:
+        cmd.pop(name,source)
+        return json.dumps({"success": True, "message": "Pop command executed successfully"})
+    except Exception as e:
+        return json.dumps({"success": False, "message": str(e)})
