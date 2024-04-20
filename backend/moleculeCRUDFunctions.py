@@ -121,3 +121,35 @@ def pop_cmd(name, source):
         return json.dumps({"success": True, "message": "Pop command executed successfully"})
     except Exception as e:
         return json.dumps({"success": False, "message": str(e)})
+    
+    
+def identify_cmd(selection=("all"), mode=0):
+    """
+    Returns a list of atom IDs corresponding to the ID code
+    of atoms in the selection.
+    noteee: this is actual parameter selection="(all)"cle, mode=0
+    Parameters
+    ----------
+    selection : str, optional
+        Atom selection. Default is "(all)".
+    mode : int, optional
+        Identification mode. 0: return a list of identifiers, 1: return a list of tuples of the object name and the identifier.
+        Default is 0.
+
+    Returns
+    -------
+    results : list
+        List of atom IDs or tuples of object name and atom ID based on the mode.
+    """
+    try:
+        identifiers = cmd.identify(selection, mode)
+        if mode == 1:
+            # Convert identifiers to list of tuples of object name and identifier
+            results = [(obj, atom_id) for obj, atom_id in identifiers]
+        else:
+            # Return list of identifiers
+            results = identifiers
+        return json.dumps({"success": True, "identifiers": results})
+    except Exception as e:
+        return json.dumps({"success": False, "message": str(e)})
+

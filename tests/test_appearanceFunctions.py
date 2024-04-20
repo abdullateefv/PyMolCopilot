@@ -38,4 +38,12 @@ def test_color_cmd(tool_call_validator):
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
 
 
+def test_recolor_cmd(tool_call_validator):
+    # Example test case for recolor command
+    prompt = "recolor the selection all with represenation everyting"
+    expected_function_name = "recolor_cmd"
+    expected_arguments = {'selection': 'all', 'representation': 'everything'}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
 

@@ -245,6 +245,38 @@
         "required" : ["name","source"]
       }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+        "name": "recolor_cmd",
+        "description": "Forces reapplication of colors to existing objects.",
+        "parameters": {
+          "type" : "object",
+          "properties" : {
+            "selection": {
+                "type": "string",
+                "description": "Selection of atoms to apply colors to. Default is 'all'."
+            },
+            "representation": {
+                "type": "string",
+                "description": "Representation of objects to recolor. Default is 'everything'."
+            }
+        }
+      }
   }
-  
+  },
+  {
+  "type": "function",
+  "function": {
+      "name": "identify_cmd",
+      "description": "Returns a list of atom IDs corresponding to the ID code of atoms in the selection.",
+      "parameters": {
+        "type" : "object",
+        "properties" : {
+          "selection": {"type": "string", "description": "Atom selection."},
+          "mode": {"type": "integer", "description": "Identification mode. 0: return a list of identifiers, 1: return a list of tuples of the object name and the identifier."}
+      }
+  }
+  }}
 ]

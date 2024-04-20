@@ -41,10 +41,21 @@ def test_attach_cmd(tool_call_validator):
 
 
 def test_pop_cmd(tool_call_validator):
-    cmd.select("sele")
-    prompt = "Can you pop the atom with name C and source sele "
+    # cmd.select("sele")
+    prompt = "Can you pop the atom with name C and source all "
     expected_function_name = "pop_cmd"
-    expected_arguments = {'name': 'C', 'source': 'sele'}
+    expected_arguments = {'name': 'C', 'source': 'all'}
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+    
+def test_identify_cmd(tool_call_validator):
+    prompt = "Identify the list of atom id with selection all and mode 0."
+    expected_function_name = "identify_cmd"
+    expected_arguments = {'selection': 'all', 'mode': 0}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+    
+    

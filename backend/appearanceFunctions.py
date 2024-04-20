@@ -131,3 +131,24 @@ def color_cmd(color, selection_set="(all)"):
         return json.dumps({"success": False, "message": str(exceptionMessage)})
 
 
+def recolor_cmd(selection=("all"), representation="everything"):
+    """
+    Forces reapplication of colors to existing objects.
+
+    Parameters
+    ----------
+    selection : str, optional
+        Selection of atoms to apply colors to. Default is 'all'.
+    representation : str, optional
+        Representation of objects to recolor. Default is 'everything'.
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON-formatted string.
+    """
+    try:
+        cmd.recolor(selection, representation)
+        return json.dumps({"success": True, "message": "Colors reapplied successfully"})
+    except Exception as e:
+        return json.dumps({"success": False, "message": str(e)})
