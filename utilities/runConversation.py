@@ -136,7 +136,6 @@ def process_messages(messages, verbose):
     tool_call_requests = []  # To store details about the tool calls
     tool_call_responses = {}  # To map responses to their calls
     toolCallsResults = []
-    toolCallsResults = []
 
     # First, categorize messages and collect tool call responses
     for message in messages:
