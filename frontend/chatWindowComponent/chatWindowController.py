@@ -10,7 +10,7 @@ import sys
 plugin_dir = os.path.dirname(__file__)
 if plugin_dir not in sys.path:
     sys.path.insert(0, plugin_dir)
-from utilities.runConversation import run_conversation
+from utilities.runConversation import run_conversation, process_messages, style_messages
 
 
 def make_dialog():
@@ -31,15 +31,21 @@ def make_dialog():
     # Get UI Component References
     entryField, conversationField, sendButton = form.entryField, form.conversationField, form.sendButton
 
+    entryField.setPlaceholderText("Message PyMol Assistant...")
+
     # Send Button
     def onSend():
         """
         Called when the send button is clicked. Retrieves entered prompt from entryField and executes a conversation
-        with GPT using run_conversation. Then appends the conversation messages to the UI.
+        with GPT using run_conversation. Then appends the processed & formatted conversation messages to the UI.
         """
-        enteredText = entryField.toPlainText()
-        processed_messages = run_conversation(enteredText, True)
-        conversationField.append(processed_messages)
+        newPrompt = entryField.toPlainText()
+
+        messages = run_conversation(newPrompt)
+        processedMessages, _ = process_messages(messages)
+        HTMLStyledMessages = style_messages(processedMessages)
+        print(HTMLStyledMessages)
+        conversationField.append(HTMLStyledMessages)
 
     # Handle Send Button Click
     sendButton.clicked.connect(onSend)

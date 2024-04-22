@@ -206,6 +206,53 @@
   {
     "type": "function",
     "function": {
+      "name": "color_cmd",
+      "description": "Changes the color of objects or atoms.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "color": {
+            "type": "string",
+            "description": "Color name or number."
+          },
+          "selection": {
+            "type": "string",
+            "description": "Selection expression or name pattern corresponding to the atoms or objects to be colored.",
+            "default": "(all)"
+          }
+        },
+        "required": ["color"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "quit_cmd",
+      "description": "Terminates the program.",
+      "parameters": {}
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remove_cmd",
+      "description": "Removes the atoms in a selection from their respective molecular objects.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "An atom or a group of atoms. Ex: sele, pk1, pk2, etc."
+          }
+        },
+        "required": []
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
       "name": "delete_cmd",
       "description": "Removes objects and named selections",
       "parameters": {
@@ -219,5 +266,5 @@
         "required": ["name"]
       }
     }
-  }  
+  }
 ]

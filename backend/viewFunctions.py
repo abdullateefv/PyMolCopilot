@@ -26,28 +26,49 @@ def origin_cmd(selection=None, position=None):
     try:
         if selection is not None:
             cmd.origin(selection)
-            return json.dumps({'status': 'success', 'origin_set': selection})
+            return json.dumps({"success": True, 'origin_set': selection})
         elif position is not None:
             cmd.origin(position=position)
-            return json.dumps({'status': 'success', 'origin_set': position})
+            return json.dumps({"success": True, 'origin_set': position})
         else:
             cmd.origin()
-            return json.dumps({'status': 'success', 'origin_set': '(all)'})
+            return json.dumps({"success": True, 'origin_set': '(all)'})
     except Exception as errorMessage:
-        return json.dumps({'status': 'failed', 'message': errorMessage})
-
+        return json.dumps({"success": False, 'message': str(errorMessage)})
+    
 def backward_cmd():
     """
-    Moves the movie back one frame.
+    Moves the movie back one frame
 
-    Args:
-        None
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
+    Moves the movie back one frame
 
-    Returns:
-        None
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
     """
     try:
         cmd.backward()
-        return json.dumps({"status": "success", "message": "Backward function successfully called"})
-    except:
-        return json.dumps({"status": "failed", "message": "Unable to call backward"})
+        return json.dumps({"success": True, "message": "Backward function successfully called"})
+    except Exception as errorMessage:
+        return json.dumps({"success": False, "message": str(errorMessage)})
+
+def quit_cmd():
+    """
+    Terminates the program.
+    Parameters
+    ----------
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.quit()
+        return json.dumps({"status": "success", "message": "Program terminated"})
+    except Exception as errorMessage:
+        return json.dumps({"status": "failed", "message": str(errorMessage)})
