@@ -6,6 +6,7 @@ Note: Not aesthetics or any CRUD operations
 import json
 from pymol import cmd
 
+
 def origin_cmd(selection=None, position=None):
     """
     Sets center of rotation. Defaults to the center of all objects if params None. Otherwise, set to about the named
@@ -36,8 +37,16 @@ def origin_cmd(selection=None, position=None):
     except Exception as errorMessage:
         return json.dumps({"success": False, 'message': str(errorMessage)})
 
+
+
 def backward_cmd():
     """
+    Moves the movie back one frame
+
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
     Moves the movie back one frame
 
     Returns
@@ -51,6 +60,23 @@ def backward_cmd():
     except Exception as errorMessage:
         return json.dumps({"success": False, "message": str(errorMessage)})
 
+
+def quit_cmd():
+    """
+    Terminates the program.
+    Parameters
+    ----------
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.quit()
+        return json.dumps({"status": "success", "message": "Program terminated"})
+    except Exception as errorMessage:
+        return json.dumps({"status": "failed", "message": str(errorMessage)})
+    
 def index_cmd(selection='all'):
     """
     Returns a list of tuples corresponding to the object name and index of the atoms in the selection.
