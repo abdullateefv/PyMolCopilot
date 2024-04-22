@@ -38,6 +38,7 @@ def origin_cmd(selection=None, position=None):
         return json.dumps({"success": False, 'message': str(errorMessage)})
 
 
+
 def backward_cmd():
     """
     Moves the movie back one frame

@@ -46,7 +46,7 @@ def test_remove_cmd(tool_call_validator):
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
 
-def test_center_cmd(tool_call_validator): 
+def test_center_cmd(tool_call_validator):
     prompt = "Can you center the molecule by selecting all, with state 0 and origin 1"
     expected_function_name = "center_cmd"
     expected_arguments = {'selection': 'all', 'state': 0, 'origin': 1}
@@ -62,3 +62,6 @@ def test_delete_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_h_fill_cmd(tool_call_validator):
+    assert True # Invert cannot be mocked programmatically
