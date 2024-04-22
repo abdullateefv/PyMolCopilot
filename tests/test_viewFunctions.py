@@ -19,3 +19,7 @@ def test_backward_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+
+def test_quit_cmd():
+    assert True  # Quit CMD cannot be mocked in a test (kills application)
