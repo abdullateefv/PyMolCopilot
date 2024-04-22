@@ -232,5 +232,22 @@
       "description": "Terminates the program.",
       "parameters": {}
     }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remove_cmd",
+      "description": "Removes the atoms in a selection from their respective molecular objects.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "An atom or a group of atoms. Ex: sele, pk1, pk2, etc."
+          }
+        },
+        "required": []
+      }
+    }
   }
 ]
