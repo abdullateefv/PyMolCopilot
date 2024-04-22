@@ -97,6 +97,7 @@ def attach_cmd(element, geometry, valence):
     except Exception as e:
         return json.dumps({"success": False, "message": "Failed to attach atom"})
 
+
 def remove_cmd(selection): 
     """ 
     creates a bond between two selections.
@@ -118,7 +119,8 @@ def remove_cmd(selection):
         return json.dumps({"success": True, "messsage": "The selection has successfully removed"})
     except Exception as exceptionMessage: 
         return json.dumps({"success": False, "message": exceptionMessage})
-    
+
+
 def delete_cmd(name):
     """
     Removes objects and named selections.
@@ -135,6 +137,29 @@ def delete_cmd(name):
     """
     try:
         cmd.delete(name)
-        return json.dumps({"status": "success", "message": "Specified selection successfully deleted"})
+        return json.dumps({"success": True, "message": "Specified selection successfully deleted"})
     except Exception as exceptionMessage:
         return json.dumps({"success": False, "message": exceptionMessage})
+
+
+def center_cmd(selection="all", state="0", origin="1"):
+    """
+    Translates the window and the origin to a point centered within the atom selection.
+
+    Parameters
+    ----------
+    selection: str
+        An singular atom or a chain that is meant to serve as the guidline to center
+    state: int
+        coordinate to match states.
+    origin: int
+        to move or not to move the center of the selection when centering.
+    """
+
+    from pymol import cmd
+
+    try:
+        cmd.center(selection, state, origin)
+        return json.dumps({"success": True, "message": "Selection has been centered"})
+    except Exception as exceptionMessage:
+        return json.dumps({"success": False, "message": str(exceptionMessage)})

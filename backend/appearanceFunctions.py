@@ -81,6 +81,7 @@ def refresh_cmd():
     except Exception as exceptionMessage:
         return json.dumps({"success": False, "message": str(exceptionMessage)})
 
+
 def color_cmd(color, selection_set="(all)"):
     """
     Changes the color of objects or atoms.
@@ -88,7 +89,7 @@ def color_cmd(color, selection_set="(all)"):
     ----------
     color : str
         Color name or number.
-    selection : str, optional (Default is "(all)")
+    selection_set : str, optional (Default is "(all)")
         Selection expression or name pattern corresponding to the atoms or objects to be colored.
     Returns
     -------

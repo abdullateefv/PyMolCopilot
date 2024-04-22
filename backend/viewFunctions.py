@@ -6,6 +6,7 @@ Note: Not aesthetics or any CRUD operations
 import json
 from pymol import cmd
 
+
 def origin_cmd(selection=None, position=None):
     """
     Sets center of rotation. Defaults to the center of all objects if params None. Otherwise, set to about the named
@@ -35,7 +36,8 @@ def origin_cmd(selection=None, position=None):
             return json.dumps({"success": True, 'origin_set': '(all)'})
     except Exception as errorMessage:
         return json.dumps({"success": False, 'message': str(errorMessage)})
-    
+
+
 def backward_cmd():
     """
     Moves the movie back one frame
@@ -56,6 +58,7 @@ def backward_cmd():
         return json.dumps({"success": True, "message": "Backward function successfully called"})
     except Exception as errorMessage:
         return json.dumps({"success": False, "message": str(errorMessage)})
+
 
 def quit_cmd():
     """

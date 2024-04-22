@@ -10,7 +10,8 @@ from openai import OpenAI
 from pymol import cmd
 from openai.types.chat import ChatCompletionMessage
 from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd, refresh_cmd, color_cmd
-from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd, remove_cmd, delete_cmd
+from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd, remove_cmd, delete_cmd, \
+    center_cmd
 from backend.viewFunctions import origin_cmd, backward_cmd, quit_cmd
 from backend.settingsFunctions import button_cmd
 
@@ -33,6 +34,7 @@ def fetch_cmd(pdb_code):
     except Exception as e:
         return json.dumps({'success': False})
 
+
 # Define available functions for calling
 available_functions = {
     "origin_cmd": origin_cmd,
@@ -46,10 +48,10 @@ available_functions = {
     "button_cmd": button_cmd,
     "backward_cmd": backward_cmd,
     "color_cmd": color_cmd,
-    "fetch_cmd": fetch_cmd,
     "quit_cmd": quit_cmd,
     "remove_cmd": remove_cmd,
-    "delete_cmd": delete_cmd
+    "delete_cmd": delete_cmd,
+    "center_cmd": center_cmd,
 }
 
 # Load toolsDescription.json defining available function tools
@@ -58,6 +60,7 @@ parent_dir = os.path.dirname(current_dir)
 tools_desc_path = os.path.join(parent_dir, 'backend', 'toolsDescription.json')
 with open(tools_desc_path, 'r') as f:
     tools = json.load(f)
+
 
 def run_conversation(newMessage):
     """
