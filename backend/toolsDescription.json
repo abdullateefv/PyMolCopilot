@@ -228,6 +228,48 @@
   {
     "type": "function",
     "function": {
+      "name": "quit_cmd",
+      "description": "Terminates the program.",
+      "parameters": {}
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remove_cmd",
+      "description": "Removes the atoms in a selection from their respective molecular objects.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "An atom or a group of atoms. Ex: sele, pk1, pk2, etc."
+          }
+        },
+        "required": []
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "delete_cmd",
+      "description": "Removes objects and named selections",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name(s) of object(s) or selection(s), supports wildcards (*)"
+          }
+        },
+        "required": ["name"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
       "name": "h_fill_cmd",
       "description": "Removes and replaces hydrogens on the atom or bond picked for editing.",
       "parameters": {}
