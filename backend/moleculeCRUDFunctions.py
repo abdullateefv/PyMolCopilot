@@ -118,3 +118,23 @@ def remove_cmd(selection):
         return json.dumps({"success": True, "messsage": "The selection has successfully removed"})
     except Exception as exceptionMessage: 
         return json.dumps({"success": False, "message": exceptionMessage})
+    
+def delete_cmd(name):
+    """
+    Removes objects and named selections.
+
+    Parameters
+    ----------
+    name: str
+        Name(s) of object(s) or selection(s), supports wildcards (*)
+
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.delete(name)
+        return json.dumps({"status": "success", "message": "Specified selection successfully deleted"})
+    except Exception as exceptionMessage:
+        return json.dumps({"success": False, "message": exceptionMessage})
