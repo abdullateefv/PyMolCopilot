@@ -31,10 +31,6 @@ def test_function_consistency():
     from utilities.runConversation import available_functions
     available_function_count = len(available_functions)
 
-    # Assert all counts are equal
-    assert json_function_count == backend_function_count, f"Mismatch between # of functions described in toolsDescription and # of backend functions implemented: {json_function_count} vs {backend_function_count}"
-    assert json_function_count == available_function_count, f"Mismatch between # of functions described in toolsDescription and # of functions imported in runConversation: {json_function_count} vs {available_function_count}"
-
     # Count test functions in other test files
     test_dir = os.path.dirname(__file__)
     test_function_count = 0
@@ -43,5 +39,14 @@ def test_function_consistency():
             with open(os.path.join(test_dir, file), 'r') as test_file:
                 test_function_count += sum(1 for line in test_file if line.strip().startswith('def test_'))
 
-    # Assert the count of test functions matches other counts
-    assert test_function_count == json_function_count, f"Mismatch between # of function tests written and # of functions described in toolsdescription: {test_function_count} vs {json_function_count}"
+    if json_function_count == backend_function_count == test_function_count == available_function_count:
+        print(
+            f"\033[1;32m Tools Description Function Count: {json_function_count} | Implemented Function Count: {backend_function_count} | Function Test Count: {test_function_count} | Available Function Count: {available_function_count}\033[0m")
+    else:
+        print(
+            f"\033[1;31m Tools Description Function Count: {json_function_count} | Implemented Function Count: {backend_function_count} | Function Test Count: {test_function_count} | Available Function Count: {available_function_count}\033[0m")
+
+    # Assert all counts are equal
+    assert json_function_count == backend_function_count, f"Mismatch between # of functions described in toolsDescription and # of backend functions implemented: {json_function_count} vs {backend_function_count}"
+    assert json_function_count == available_function_count, f"Mismatch between # of functions described in toolsDescription and # of functions imported in runConversation: {json_function_count} vs {available_function_count}"
+    assert test_function_count == json_function_count, f"Mismatch between # of function tests written and # of functions described in toolsDescription: {test_function_count} vs {json_function_count}"
