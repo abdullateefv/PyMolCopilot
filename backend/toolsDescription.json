@@ -243,7 +243,7 @@
         "properties": {
           "selection": {
             "type": "string",
-            "description": "An atom or a group of atoms.Ex: sele, pk1, pk2, etc."
+            "description": "An atom or a group of atoms. Ex: sele, pk1, pk2, etc."
           }
         },
         "required": []
