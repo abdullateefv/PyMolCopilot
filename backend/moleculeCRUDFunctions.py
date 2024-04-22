@@ -97,6 +97,7 @@ def attach_cmd(element, geometry, valence):
     except Exception as e:
         return json.dumps({"success": False, "message": "Failed to attach atom"})
 
+
 def remove_cmd(selection): 
     """ 
     creates a bond between two selections.
@@ -119,6 +120,7 @@ def remove_cmd(selection):
     except Exception as exceptionMessage: 
         return json.dumps({"success": False, "message": exceptionMessage})
 
+
 def delete_cmd(name):
     """
     Removes objects and named selections.
@@ -135,7 +137,7 @@ def delete_cmd(name):
     """
     try:
         cmd.delete(name)
-        return json.dumps({"status": "success", "message": "Specified selection successfully deleted"})
+        return json.dumps({"success": True, "message": "Specified selection successfully deleted"})
     except Exception as exceptionMessage:
         return json.dumps({"success": False, "message": exceptionMessage})
 

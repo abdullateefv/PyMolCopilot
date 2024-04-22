@@ -5,6 +5,7 @@ This file contains functions that modify editor settings
 import json
 from pymol import cmd
 
+
 def button_cmd(button, modifier, action):
     """
     Redefines what the mouse buttons do in PyMOL.

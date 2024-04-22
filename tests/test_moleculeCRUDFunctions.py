@@ -53,3 +53,12 @@ def test_center_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+
+def test_delete_cmd(tool_call_validator):
+    prompt = "Delete (not remove) the selection from the molecule based on the selection sele"
+    expected_function_name = "delete_cmd"
+    expected_arguments = {'name': 'sele'}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
