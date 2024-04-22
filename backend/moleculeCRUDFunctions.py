@@ -137,4 +137,4 @@ def delete_cmd(name):
         cmd.delete(name)
         return json.dumps({"status": "success", "message": "Specified selection successfully deleted"})
     except Exception as exceptionMessage:
-        return json.dumps({"status": "failed", "error": exceptionMessage})
+        return json.dumps({"success": False, "message": exceptionMessage})
