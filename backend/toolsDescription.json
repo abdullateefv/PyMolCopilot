@@ -249,5 +249,33 @@
         "required": []
       }
     }
+  }, 
+  { 
+    "type": "function", 
+    "function": { 
+      "name": "center_cmd", 
+      "description": "Translates the window, the clipping slab, and the origin to a point centered within the atom selection.", 
+      "parameters": {
+        "type": "object", 
+        "properties": { 
+          "selection": { 
+            "type": "string", 
+            "description": "selection-expression or name pattern",
+            "default": "all"
+          }, 
+          "state": { 
+            "type": "integer", 
+            "description": "coordinates for states. 0 means use all coordinate states, greater than 0 means use coordinates for a specific state, and -1 means use only coordinates for the current state.",
+            "default": "0"
+          }, 
+          "origin": { 
+            "type": "integer", 
+            "description": "This is the origin to use to center the selection. 1 means move the origin, 0 means keep the origin unchanged.",
+            "default": "1"
+          }
+        }, 
+        "required": ["selection"]
+      }
+    }
   }
 ]
