@@ -73,3 +73,16 @@ def test_indicate_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_load_cmd(tool_call_validator):
+    prompt = "can you load the file 1f21.cif, with the object being 1f21, state 0 and format is the file extension"
+    expected_function_name = "load_cmd"
+    expected_arguments = {
+        "filename": "1f21.cif", 
+        "object": "1f21", 
+        "state": 0, 
+        "format": "cif"
+    }
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)

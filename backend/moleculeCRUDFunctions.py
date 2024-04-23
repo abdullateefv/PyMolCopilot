@@ -199,3 +199,49 @@ def indicate_cmd(selection="all"):
         return json.dumps({"success": True, "message": "Atom selection indicated"})
     except Exception as exceptionMessage:
         return json.dumps({"success": False, "message": str(exceptionMessage)})
+
+def load_cmd(filename, object=None, state=0, format=None, finish=None, discrete=None,
+            quiet=None, multiplex=None, zoom=None, partial=None, mimic=None, object_props=None,
+            atom_props=None):
+    """
+    Load a file into PyMOL.
+
+    Parameters
+    ----------
+    filename : str
+        File path or URL.
+    object_name : str, optional
+        Name of the object (default: filename prefix).
+    state : int, optional
+        Number of the state into which the content should be loaded, or 0 for append (default: 0).
+    file_format : str, optional
+        Format of the data file (default: use file extension).
+    finish : int, optional
+        Finish parameter (default: None).
+    discrete : int, optional
+        Discrete parameter (default: None).
+    quiet : int, optional
+        Quiet parameter (default: None).
+    multiplex : int, optional
+        Multiplex parameter (default: None).
+    zoom : int, optional
+        Zoom parameter (default: None).
+    partial : int, optional
+        Partial parameter (default: None).
+    mimic : int, optional
+        Mimic parameter (default: None).
+    object_props : str, optional
+        Specifies whether properties should be loaded into PyMOL (default: use load_object_props_default setting).
+    atom_props : str, optional
+        Specifies whether atom properties should be loaded into PyMOL (default: use load_atom_props_default setting).
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON-formatted string.
+    """
+    try:
+        cmd.load(filename, object, state, format)
+        return json.dumps({"success": True, "message": "File loaded successfully"})
+    except Exception as exceptionMessage:
+        return json.dumps({"success": False, "message": str(exceptionMessage)})
