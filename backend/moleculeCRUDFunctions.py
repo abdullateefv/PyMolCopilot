@@ -179,3 +179,23 @@ def h_fill_cmd():
         return json.dumps({"status": "success", "message": "Successfully executed h_fill"})
     except Exception as exceptionMessage:
         return json.dumps({"status": "failed", "message": str(exceptionMessage)})
+    
+def indicate_cmd(selection="all"):
+    """
+    Shows a visual representation of an atom selection
+
+    Parameters
+    ----------
+    selection : str, optional (Default is "all")
+        The atom selection to indicate.
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.indicate(selection)
+        return json.dumps({"success": True, "message": "Atom selection indicated"})
+    except Exception as exceptionMessage:
+        return json.dumps({"success": False, "message": str(exceptionMessage)})

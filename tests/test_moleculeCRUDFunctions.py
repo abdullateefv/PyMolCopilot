@@ -65,3 +65,11 @@ def test_delete_cmd(tool_call_validator):
 
 def test_h_fill_cmd(tool_call_validator):
     assert True # Invert cannot be mocked programmatically
+
+def test_indicate_cmd(tool_call_validator):
+    prompt = "Show a visual representation of the all the molecules"
+    expected_function_name = "indicate_cmd"
+    expected_arguments = {}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
