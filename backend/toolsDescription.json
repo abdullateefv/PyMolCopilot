@@ -336,5 +336,53 @@
         "required": []
       }
     }
+  }, 
+  {
+    "type": "function", 
+    "function": { 
+      "name": "load_cmd", 
+      "description": "load can by used to read molecules, crystallographic maps and other volumetric data, PyMOL sessions, and some other types of content.", 
+      "parameters": {
+        "type": "object",
+        "properties": { 
+          "filename": { 
+            "type": "string", 
+            "description": "file path or url"
+          },
+          "object": {
+            "type": "string", 
+            "description": "name of the object",
+            "default": "filename prefix"
+          }, 
+          "state": {
+            "type": "integer", 
+            "description": "number of the state into which the content should be loaded, or 0 to append after last state.",
+            "default": "0"
+          }, 
+
+          "format": {
+            "type": "string", 
+            "description": "this is the file format. Example: pdb, ccp4, etc.", 
+            "default":"guess from extension"
+          }, 
+          "partial": {
+            "type": "string", 
+            "description": "for session files, the partial flag loads the session while preserving what is currently loaded in PyMOL.  If it is set to 2, then the view that is in the session gets set to the current view"
+          },
+          
+         "object_props": {
+            "type": "string", 
+            "description": "argument specifies whether properties should be loaded into PyMOL.  If it is a space-delimited list, then only these properties will get loaded. If it is a '*', then all properties get loaded.If an empty string, then no properties get loaded.", 
+            "default": "use load_object_props_default setting"
+          }, 
+
+          "atom_props": { 
+            "type": "string", 
+            "description": "argument specifies whether atom properties should be loaded into PyMOL.  If it is a space-delimited list, then only these properties will get loaded. If it is a '*', then all properties get loaded. If an empty string, then no properties get loaded.", 
+            "default": "use load_atom_props_default setting"
+          }
+      }
+    }
+  }
   }
 ]
