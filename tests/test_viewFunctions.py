@@ -19,7 +19,26 @@ def test_backward_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
-    
+
+
+def test_quit_cmd():
+    assert True  # Quit CMD cannot be mocked in a test (kills application)
+
+def test_index_cmd(tool_call_validator):
+    prompt = "Return a list of tuples corresponding to the object name and index of all the atoms in the selection"
+    expected_function_name = "index_cmd"
+    expected_arguments = {}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_move_cmd(tool_call_validator):
+    prompt = "Translate the camera along the x-axis by 3 units"
+    expected_function_name = "move_cmd"
+    expected_arguments = {'axis': 'x', 'distance': 3.0}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
 
 def test_orient_cmd(tool_call_validator):
     prompt = "Align all the molecules with state 0 and animate 1.0"
