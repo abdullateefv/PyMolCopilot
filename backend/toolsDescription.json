@@ -336,6 +336,23 @@
         "required": []
       }
     }
+  }, 
+  { 
+    "type": "function", 
+    "function": { 
+      "name": "disable_cmd", 
+      "description": "disable turns off display for one more selections", 
+      "parameters": {
+        "type": "object", 
+        "properties": { 
+          "name": { 
+            "type": "string", 
+            "description": "name-pattern or sleection.Ex: sele, pk1, pk2, etc."
+          }
+        }, 
+        "required": ["name"]
+      }
+    }
   },
   {
     "type": "function",

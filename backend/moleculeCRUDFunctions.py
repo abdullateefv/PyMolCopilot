@@ -199,6 +199,28 @@ def indicate_cmd(selection="all"):
         return json.dumps({"success": True, "message": "Atom selection indicated"})
     except Exception as exceptionMessage:
         return json.dumps({"success": False, "message": str(exceptionMessage)})
+
+def disable_cmd(name): 
+    """ 
+    turns off display for one or more selections. 
+
+    Parameters
+    ----------
+    name: str
+
+    Returns
+    -------
+    The molecule after disabling the selection.
+
+    """
+
+    from pymol import cmd 
+
+    try: 
+        cmd.disable(name)
+        return json.dumps({"success": True, "messsage": "The selection has successfully hidden/disabled"})
+    except Exception as exceptionMessage: 
+        return json.dumps({"success": False, "message": exceptionMessage})
     
 def invert_cmd():
     """

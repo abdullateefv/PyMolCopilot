@@ -73,5 +73,13 @@ def test_indicate_cmd(tool_call_validator):
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
 
+def test_disable_cmd(tool_call_validator):
+    prompt = "can you disable the selection"
+    expected_function_name = "disable_cmd"
+    expected_arguments = {'name': 'sele'}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
 def test_invert_cmd(tool_call_validator):
     assert True # Invert cannot be mocked programmatically
