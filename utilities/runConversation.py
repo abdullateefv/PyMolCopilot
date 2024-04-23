@@ -11,7 +11,7 @@ from pymol import cmd
 from openai.types.chat import ChatCompletionMessage
 from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd, refresh_cmd, color_cmd
 from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd, remove_cmd, delete_cmd, \
-    center_cmd, h_fill_cmd, indicate_cmd
+    center_cmd, h_fill_cmd, indicate_cmd, invert_cmd
 from backend.viewFunctions import origin_cmd, backward_cmd, quit_cmd, index_cmd
 from backend.settingsFunctions import button_cmd
 
@@ -54,7 +54,8 @@ available_functions = {
     "center_cmd": center_cmd,
     "h_fill_cmd": h_fill_cmd,
     "index_cmd": index_cmd,
-    "indicate_cmd": indicate_cmd
+    "indicate_cmd": indicate_cmd,
+    "invert_cmd": invert_cmd
 }
 
 # Load toolsDescription.json defining available function tools

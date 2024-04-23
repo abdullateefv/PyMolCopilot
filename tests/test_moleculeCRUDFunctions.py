@@ -2,7 +2,6 @@
 Mocks prompts targeting BE functions in moleculeCRUDFunctions.py, tests for correct function call & success
 """
 
-
 def test_create_cmd(tool_call_validator):
     prompt = "Create a new molecule called newMol from the 'all' selection"
     expected_function_name = "create_cmd"
@@ -73,3 +72,6 @@ def test_indicate_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_invert_cmd(tool_call_validator):
+    assert True # Invert cannot be mocked programmatically

@@ -336,5 +336,17 @@
         "required": []
       }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "invert_cmd",
+      "description": "Inverts the stereo-chemistry of atom (pk1), holding attached atoms (pk2) and (pk3) immobile",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    }
   }
 ]
