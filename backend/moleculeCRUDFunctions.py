@@ -221,3 +221,22 @@ def disable_cmd(name):
         return json.dumps({"success": True, "messsage": "The selection has successfully hidden/disabled"})
     except Exception as exceptionMessage: 
         return json.dumps({"success": False, "message": exceptionMessage})
+    
+def invert_cmd():
+    """
+    Inverts the stereo-chemistry of atom (pk1), holding attached atoms (pk2) and (pk3) immobile.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    results : str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.invert()
+        return json.dumps({"success": True, "message": "Stereo-chemistry inverted successfully"})
+    except Exception as exceptionMessage:
+        return json.dumps({"success": False, "message": str(exceptionMessage)})
