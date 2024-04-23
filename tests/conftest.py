@@ -17,9 +17,10 @@ def run_conversation_fixture():
     """
     Mocks prompt execution
     """
-    def _run(newMessage, verbose=False):
-        messages = run_conversation(newMessage, verbose)
-        _, toolCallsResults = process_messages(messages, verbose)
+
+    def _run(newMessage):
+        messages = run_conversation(newMessage)
+        _, toolCallsResults = process_messages(messages)
         return toolCallsResults
     return _run
 
