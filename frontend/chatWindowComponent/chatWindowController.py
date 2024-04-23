@@ -1,7 +1,7 @@
 from __future__ import absolute_import, print_function
 import os
 import sys
-from pymol.Qt import QtCore
+from pymol.Qt import QtCore, QtGui
 
 # Imports utilities module appropriately
 plugin_dir = os.path.dirname(__file__)
