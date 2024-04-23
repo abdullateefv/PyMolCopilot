@@ -228,6 +228,118 @@
   {
     "type": "function",
     "function": {
+      "name": "quit_cmd",
+      "description": "Terminates the program.",
+      "parameters": {}
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "remove_cmd",
+      "description": "Removes the atoms in a selection from their respective molecular objects.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "An atom or a group of atoms. Ex: sele, pk1, pk2, etc."
+          }
+        },
+        "required": []
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "delete_cmd",
+      "description": "Removes objects and named selections",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name(s) of object(s) or selection(s), supports wildcards (*)"
+          }
+        },
+        "required": ["name"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "center_cmd",
+      "description": "Translates the window, the clipping slab, and the origin to a point centered within the atom selection.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "selection-expression or name pattern",
+            "default": "all"
+          },
+          "state": {
+            "type": "integer",
+            "description": "coordinates for states. 0 means use all coordinate states, greater than 0 means use coordinates for a specific state, and -1 means use only coordinates for the current state.",
+            "default": "0"
+          },
+          "origin": {
+            "type": "integer",
+            "description": "This is the origin to use to center the selection. 1 means move the origin, 0 means keep the origin unchanged.",
+            "default": "1"
+          }
+        },
+        "required": ["selection"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "h_fill_cmd",
+      "description": "Removes and replaces hydrogens on the atom or bond picked for editing.",
+      "parameters": {}
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "index_cmd",
+      "description": "Returns a list of tuples corresponding to the object name and index of the atoms in the selection. The default value of string selection is all.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "The name of the selection for which to get the index. Defaults to 'all' if not provided."
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "indicate_cmd",
+      "description": "Shows a visual representation of an atom selection",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "selection": {
+            "type": "string",
+            "description": "The atom selection to indicate. Default is 'all'",
+            "default": "all"
+          }
+        },
+        "required": []
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
       "name": "invert_cmd",
       "description": "Inverts the stereo-chemistry of atom (pk1), holding attached atoms (pk2) and (pk3) immobile",
       "parameters": {
