@@ -1,8 +1,6 @@
 """
 Mocks prompts targeting BE functions in moleculeCRUDFunctions.py, tests for correct function call & success
 """
-from pymol import cmd
-
 
 def test_create_cmd(tool_call_validator):
     prompt = "Create a new molecule called newMol from the 'all' selection"
