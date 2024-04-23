@@ -41,9 +41,9 @@ def test_move_cmd(tool_call_validator):
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
 
 def test_orient_cmd(tool_call_validator):
-    prompt = "Align all the molecules with state 0 and animate 1.0"
+    prompt = "Align the molecules in the sele selection with state 0 and animate 1.0"
     expected_function_name = "orient_cmd"
-    expected_arguments = {'selection': 'all', 'state': 0, 'animate': 1.0}
+    expected_arguments = {'selection': 'sele', 'state': 0, 'animate': 1.0}
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
