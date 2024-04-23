@@ -31,3 +31,11 @@ def test_index_cmd(tool_call_validator):
     expected_success = True
 
     tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)
+
+def test_move_cmd(tool_call_validator):
+    prompt = "Translate the camera along the x-axis by 3 units"
+    expected_function_name = "move_cmd"
+    expected_arguments = {'axis': 'x', 'distance': 3.0}
+    expected_success = True
+
+    tool_call_validator(prompt, expected_function_name, expected_arguments, expected_success)

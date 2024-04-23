@@ -97,3 +97,25 @@ def index_cmd(selection='all'):
         return json.dumps({"success": True, 'index_list': index_list})
     except Exception as errorMessage:
         return json.dumps({"success": False, 'message': str(errorMessage)})
+    
+def move_cmd(axis, distance):
+    """
+    Translates the camera about one of the three primary axes.
+
+    Parameters
+    ----------
+    axis: str
+        The axis along which to move the camera ('x', 'y', or 'z')
+    distance: float
+        The distance by which to move the camera along the specified axis
+
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.move(axis, distance)
+        return json.dumps({"success": True, "message": f"Camera moved along {axis} axis by {distance}"})
+    except Exception as errorMessage:
+        return json.dumps({"success": False, "message": str(errorMessage)})
