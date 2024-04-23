@@ -5,6 +5,7 @@ Loads chatWindowComponent UI and controls its logic
 from __future__ import absolute_import, print_function
 import os
 import sys
+from pymol.Qt import QtCore, QtGui
 
 # Imports utilities module appropriately
 plugin_dir = os.path.dirname(__file__)
@@ -31,6 +32,15 @@ def make_dialog():
     # Get UI Component References
     entryField, conversationField, sendButton = form.entryField, form.conversationField, form.sendButton
 
+    entryField.setPlaceholderText("Message PyMol Assistant...")
+
+    def scroll_to_bottom():
+        """
+        Scrolls to the bottom of the conversation field
+        """
+        conversationField.moveCursor(QtGui.QTextCursor.End)
+        conversationField.ensureCursorVisible()
+
     # Send Button
     def onSend():
         """
@@ -39,12 +49,35 @@ def make_dialog():
         """
         newPrompt = entryField.toPlainText()
 
-        messages = run_conversation(newPrompt, verbose=True)
-        processedMessages, _ = process_messages(messages, verbose=True)
+        messages = run_conversation(newPrompt)
+        processedMessages, _ = process_messages(messages)
         HTMLStyledMessages = style_messages(processedMessages)
+        print(HTMLStyledMessages)
         conversationField.append(HTMLStyledMessages)
+
+        # Clear the text entry field
+        entryField.clear()
+
+        # Scroll to bottom
+        scroll_to_bottom()
 
     # Handle Send Button Click
     sendButton.clicked.connect(onSend)
+
+    # Handle Enter Key Press
+    def onEnterPress(event):
+        """
+        Called when the Enter key is pressed in the entryField. Sends the message and clears the text entry field.
+        """
+        if event.key() == QtCore.Qt.Key_Return or event.key() == QtCore.Qt.Key_Enter:
+            onSend()
+            entryField.clear()
+        else:
+
+            # Allow normal typing
+
+            QtWidgets.QTextEdit.keyPressEvent(entryField, event)
+
+    entryField.keyPressEvent = onEnterPress
 
     return dialog
