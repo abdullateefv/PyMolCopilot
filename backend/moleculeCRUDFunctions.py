@@ -214,8 +214,6 @@ def disable_cmd(name):
 
     """
 
-    from pymol import cmd 
-
     try: 
         cmd.disable(name)
         return json.dumps({"success": True, "messsage": "The selection has successfully hidden/disabled"})

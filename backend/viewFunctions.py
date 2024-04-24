@@ -119,3 +119,27 @@ def move_cmd(axis, distance):
         return json.dumps({"success": True, "message": f"Camera moved along {axis} axis by {distance}"})
     except Exception as errorMessage:
         return json.dumps({"success": False, "message": str(errorMessage)})
+
+def orient_cmd(selection="all", state=0, animate=0.0):
+    """
+    Aligns the principal components of the atoms in the selection with the XYZ axes.
+
+    Parameters
+    ----------
+    selection: str, optional (default is "all")
+        The name of the selection or object that should be oriented
+    state: int, optional (default is 0)
+        The state of the object
+    animate: float, optional (default is 0.0)
+        Animation duration in seconds
+
+    Returns
+    -------
+    response: str
+        Result of command execution as JSON formatted string
+    """
+    try:
+        cmd.orient(selection, state, animate)
+        return json.dumps({"success": True, "message": "Orient function successfully called"})
+    except Exception as errorMessage:
+        return json.dumps({"success": False, "message": str(errorMessage)})

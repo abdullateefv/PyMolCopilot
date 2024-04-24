@@ -12,7 +12,7 @@ from openai.types.chat import ChatCompletionMessage
 from backend.appearanceFunctions import bgColor_cmd, cartoon_cmd, refresh_cmd, color_cmd
 from backend.moleculeCRUDFunctions import create_cmd, bond_cmd, protect_cmd, attach_cmd, remove_cmd, delete_cmd, \
     center_cmd, h_fill_cmd, indicate_cmd, invert_cmd, disable_cmd
-from backend.viewFunctions import origin_cmd, backward_cmd, quit_cmd, index_cmd, move_cmd
+from backend.viewFunctions import origin_cmd, backward_cmd, quit_cmd, index_cmd, move_cmd, orient_cmd
 from backend.settingsFunctions import button_cmd
 
 from colorama import Fore, Style, init
@@ -57,7 +57,8 @@ available_functions = {
     "indicate_cmd": indicate_cmd, 
     "disable_cmd": disable_cmd,
     "invert_cmd": invert_cmd,
-    "move_cmd": move_cmd
+    "move_cmd": move_cmd,
+    "orient_cmd": orient_cmd
 }
 
 # Load toolsDescription.json defining available function tools
